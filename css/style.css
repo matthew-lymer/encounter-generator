@@ -10,6 +10,7 @@
         color:#111;
         font-size: 16px;
         line-height: 25px;
+        min-width: 850px
     }
 
     h1,
@@ -203,9 +204,10 @@
         left: 0;
         color: #fff;
         z-index: 10;
+        min-width: 850px
     }
 
-    #headerDummy{
+    #dummyHeader{
         height: 80px;
     }
 
@@ -221,20 +223,19 @@
     #filter{
         border-bottom: 2px solid #111;
         width: 100%;
-        position: absolute;
-        top:80px;
         background: #fff;
         left: 0;
     }
 
     #filter > .inner{
-        padding: 10px;
+        padding: 10px 10px 0 10px;
         border-radius: 3px;
         box-sizing: border-box;
     }
 
     .box{
         width: 33.33%;
+        width: 450px;
         display: inline-block;
         padding: 20px;
         box-sizing: border-box;
@@ -245,10 +246,12 @@
 
     .box.large{
         width: 66.66%;
+        width: 900px;
     }
 
     .box.small{
         width: 16.66%;
+        width: 225px;
     }
 
     .box > .inner{
@@ -317,6 +320,14 @@
         vertical-align: middle;
     }
 
+    a.roll{
+        margin: 0 5px 10px 5px;
+    }
+
+    a.roll h4{
+        padding: 5px 0;
+    }
+
     a.reroll:hover{
         background: rgba(0,0,0,0.15)!important;
         text-decoration: inherit;
@@ -352,7 +363,6 @@
     a.linkButton,
     a.roll{
         background-color: rgb(0,0,0,0.7);
-        margin: 0 10px;
         color: #fff;
     }
 
@@ -370,7 +380,6 @@
 
     a.redRoll{
         background-color:rgba(208, 13, 13, 0.5);
-        margin: 0 10px;
         color: #fff;
     }
 
@@ -380,6 +389,10 @@
 
     a.redRoll:active{
         background: rgba(208, 13, 13, 0.8)!important;
+    }
+
+    a#reset{
+        margin: 6px 10px;
     }
 
     a#fullscreen{
