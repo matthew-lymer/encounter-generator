@@ -26,7 +26,7 @@ $(document).ready(function(){
 
         //Initialize sorting
         $("#generator").sortable({
-            handle: ".handle",
+            handle: ".drag",
             placeholder: 'box-placeholder',
         });
     }
@@ -62,14 +62,16 @@ $(document).ready(function(){
         emptyGenerator(boxes);
         RNDEncounter = randomInt(0,encounters.length);
         var tempHTML =  '<div class="box">' +
-                        '    <h2 class="handle"><img src="images/alert.png" width="40" height="40" /> Scenario</h2>' +
+                        '    <h2 class="handle"><img src="images/alert.png" width="25" height="25" /> Scenario</h2>' +
                         '    <div class="inner">' +
                         '        <div class="encounters"><strong>Scenario</strong> | <span>'+encounters[RNDEncounter]+'</span></div>' +
                         '        <div class="text-center">' +
-                        '           <a class="reRollScenario reroll" href="#"><h4>RE-ROLL <img src="images/dice.png" width="27"' +
-                        '           height="27" /></h4></a>' +
+                        '           <a class="reRollScenario reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                        '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
                         '       </div>' +
                         '    </div>' +
                         '</div>';
@@ -92,17 +94,19 @@ $(document).ready(function(){
         RNDTerrain = randomInt(0,terrain.length);
         RNDStructures = randomInt(0,geoStructure.length);
         var tempHTML =  '<div class="box">' +
-                        '    <h2 class="handle"><img src="images/tree.png" width="40" height="40" /> Environment</h2>' +
+                        '    <h2 class="handle"><img src="images/tree.png" width="25" height="25" /> Environment</h2>' +
                         '    <div class="inner">' +
                         '        <div class="biome"><strong>Biome</strong> | <span>'+biome[RNDBiome]+'</span></div>' +
                         '        <div class="terrain"><strong>Terrain</strong> | <span>'+terrain[RNDTerrain]+'</span></div>' +
                         '        <div class="weather"><strong>Weather</strong> | <span>'+weather[RNDWeather]+'</span></div>' +
                         '        <div class="environment"><strong>Structures</strong> | <span>'+geoStructure[RNDStructures]+'</span></div>' +
                         '        <div class="text-center">' +
-                        '           <a class="reRollEnvironment reroll" href="#"><h4>RE-ROLL <img src="images/dice.png" width="27"' +
-                        '           height="27" /></h4></a>' +
+                        '           <a class="reRollEnvironment reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                        '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
                         '       </div>' +
                         '    </div>' +
                         '</div>';
@@ -128,16 +132,18 @@ $(document).ready(function(){
         emptyGenerator(boxes);
         RNDItem = randomInt(0,items.length);
         var tempHTML =  '<div class="box">' +
-                        '    <h2 class="handle"><img src="images/item.png" width="40" height="40" /> Item</h2>' +
+                        '    <h2 class="handle"><img src="images/item.png" width="25" height="25" /> Item</h2>' +
                         '    <div class="inner">' +
                         '        <div class="item_a"><strong>Name</strong> | <span>'+items[RNDItem][0]+'</span></div>' +
                         '        <div class="item_b"><strong>Description</strong> | <span>'+items[RNDItem][2]+'</span></div>' +
                         '        <div class="item_c"><iframe src="https://roll20.net'+items[RNDItem][1]+'#pageAttrs"></iframe></div>' +
                         '        <div class="text-center">' +
-                        '           <a class="reRollItem reroll" href="#"><h4>RE-ROLL <img src="images/dice.png" width="27"' +
-                        '           height="27" /></h4></a>' +
+                        '           <a class="reRollItem reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                        '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
                         '       </div>' +
                         '    </div>' +
                         '</div>';
@@ -159,17 +165,19 @@ $(document).ready(function(){
         emptyGenerator(boxes);
         RNDMonster = monsterGenerator();
         var tempHTML =  '<div class="box large">' +
-                        '    <h2 class="handle"><img src="images/monster.png" width="40" height="40" /> Monster</h2>' +
+                        '    <h2 class="handle"><img src="images/monster.png" width="25" height="25" /> Monster</h2>' +
                         '    <div class="inner">' +
                         '        <div class="monster_a"><strong>Name</strong> | <span>'+RNDMonster[0]+'</span></div>' +
                         '        <div class="monster_b left two-thirds border-box"><iframe src="https://roll20.net'+RNDMonster[1]+'"></iframe></div>' +
                         '        <div class="monster_c left one-third border-box"><iframe src="https://www.google.co.uk/search?igu=1&q=D%26D '+RNDMonster[0]+'&tbm=isch#search"></iframe></div>' +
                         '        <div class="text-center clear">' +
                         '           <a class="expand reroll" href="#"><h4>EXPAND</h4></a>' +
-                        '           <a class="reRollMonster reroll" href="#"><h4>RE-ROLL <img src="images/dice.png" width="27"' +
-                        '           height="27" /></h4></a>' +
+                        '           <a class="reRollMonster reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                        '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
                         '       </div>' +
                         '    </div>' +
                         '</div>';
@@ -191,17 +199,19 @@ $(document).ready(function(){
         emptyGenerator(boxes);
         RNDNPC = NPCGenerator();
 
-        var tempHTML =  '<div class="box large">' +
-                        '    <h2 class="handle"><img src="images/npc.png" width="40" height="40" /> NPC</h2>' +
+        var tempHTML =  '<div class="box medlarge">' +
+                        '    <h2 class="handle"><img src="images/npc.png" width="25" height="25" /> NPC</h2>' +
                         '    <div class="inner">' +
                         '        <div class="character_a left one-third border-box">'+RNDNPC[0]+'</div>' +
                         '        <div class="character_b left one-third border-box">'+RNDNPC[1]+'</div>' +
                         '        <div class="character_c left one-third border-box">'+RNDNPC[2]+'</div>' +
                         '        <div class="text-center clear">' +
-                        '           <a class="reRollMonster reroll" href="#"><h4>RE-ROLL <img src="images/dice.png" width="27"' +
-                        '           height="27" /></h4></a>' +
+                        '           <a class="reRollMonster reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                        '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
                         '       </div>' +
                         '    </div>' +
                         '</div>';
@@ -222,7 +232,7 @@ $(document).ready(function(){
         boxes++;
         emptyGenerator(boxes);
         var tempHTML =  '<div class="box">' +
-                        '    <h2 class="handle"><img src="images/duel.png" width="40" height="40" /> COMBAT </h2>' +
+                        '    <h2 class="handle"><img src="images/duel.png" width="25" height="25" /> COMBAT </h2>' +
                         '    <div class="inner text-center">' +
                         '        <div class="one-third left">Name</div>' +
                         '        <div class="one-third left">Initiative</div>' +
@@ -236,10 +246,12 @@ $(document).ready(function(){
                         '        </div>' +
                         '        <div class="text-center clear">' +
                         '           <a class="addCombatant reroll" href="#"><h4>+ ADD</h4></a>' +
-                        '           <a class="resetCombat reroll" href="#"><h4>RESET <img src="images/dice.png" width="27"' +
-                        '           height="27" /></h4></a>' +
+                        '           <a class="resetCombat reroll" href="#"><h4>RESET <img src="images/dice.png" width="24"' +
+                        '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
                         '       </div>' +
                         '    </div>' +
                         '</div>';
@@ -273,12 +285,14 @@ $(document).ready(function(){
         boxes++;
         emptyGenerator(boxes);
         var tempHTML =  '<div class="box small">' +
-                        '    <h2 class="handle"><img src="images/note.png" width="40" height="40" /> NOTE</h2>' +
+                        '    <h2 class="handle"><img src="images/note.png" width="25" height="25" /> NOTE</h2>' +
                         '    <div class="inner text-center">' +
                         '        <textarea placeholder="Notes..."></textarea>' +
                         '        <div class="text-center clear">' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
                         '       </div>' +
                         '    </div>' +
                         '</div>';
@@ -289,8 +303,8 @@ $(document).ready(function(){
     $("#addChallenge").on("click", function(e){
         boxes++;
         emptyGenerator(boxes);
-        var tempHTML =  '<div class="box">' +
-                        '    <h2 class="handle"><img src="images/star.png" width="40" height="40" /> CHALLENGE</h2>' +
+        var tempHTML =  '<div class="box medsmall">' +
+                        '    <h2 class="handle"><img src="images/star.png" width="25" height="25" /> CHALLENGE</h2>' +
                         '    <div class="inner text-center">' +
                         '        <div class="one-half left">Party Size</div>' +
                         '        <div class="one-half left">Party Lv.</div>' +
@@ -304,10 +318,12 @@ $(document).ready(function(){
                         '            result' +
                         '        </div>' +
                         '        <div class="text-center clear">' +
-                        '           <a class="calculateChallenge reroll" href="#"><h4>CALCULATE <img src="images/dice.png" width="27"' +
-                        '           height="27" /></h4></a>' +
+                        '           <a class="calculateChallenge reroll" href="#"><h4>CALCULATE <img src="images/dice.png" width="24"' +
+                        '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
                         '       </div>' +
                         '    </div>' +
                         '</div>';
