@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>D&amp;D ENCOUNTER GENERATOR</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta content="IE=9" http-equiv="X-UA-Compatible">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<!--<link rel="icon" sizes="150x150" type="image/png" href="/images/favicon.png">-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
     <body>
         <header class="text-center">
             <a id="reset" class="redRoll left" href="#"><h4>Reset</h4></a>
             <a id="fullscreen" class="reroll right" href="#"><h4>FULLSCREEN</h4></a>
-            <h1>D&amp;D ENCOUNTER GENERATOR</h1>
+            <h1>D&amp;D Encounter Generator</h1>
             <div class="clear"></div>
+            <div id="filter" class="no-select text-center">
+                <div class="inner">
+                    <a id="addScenario" class="roll" href="#"><h5>+ Scenario</h5></a>
+                    <a id="addEnvironment" class="roll" href="#"><h5>+ Environmental</h5></a>
+                    <a id="addItem" class="roll" href="#"><h5>+ Item</h5></a>
+                    <a id="addMonster" class="roll" href="#"><h5>+ Monster</h5></a>
+                    <a id="addNPC" class="roll" href="#"><h5>+ NPC</h5></a>
+                    <a id="addCombat" class="roll" href="#"><h5>+ Combat</h5></a>
+                    <a id="addChallenge" class="roll" href="#"><h5>+ Challenge</h5></a>
+                    <a id="addNote" class="roll" href="#"><h5>+ Note</h5></a>
+                </div>
+            </div>
         </header>
         <div id="dummyHeader"></div>
-        <div id="filter" class="no-select text-center">
-            <div class="inner">
-                <a id="addScenario" class="roll" href="#"><h4>+ Add Scenario</h4></a>
-                <a id="addEnvironment" class="roll" href="#"><h4>+ Add Environmental</h4></a>
-                <a id="addItem" class="roll" href="#"><h4>+ Add Item</h4></a>
-                <a id="addMonster" class="roll" href="#"><h4>+ Add Monster</h4></a>
-                <a id="addNPC" class="roll" href="#"><h4>+ Add NPC</h4></a>
-                <a id="addCombat" class="roll" href="#"><h4>+ Add Combat</h4></a>
-                <a id="addNote" class="roll" href="#"><h4>+ Add Note</h4></a>
-            </div>
-        </div>
         <div id="main">
             <div id="headerDummy"></div>
             <div id="generator">

@@ -25,7 +25,10 @@ $(document).ready(function(){
         }
 
         //Initialize sorting
-        $("#generator").sortable();
+        $("#generator").sortable({
+            handle: ".handle",
+            placeholder: 'box-placeholder',
+        });
     }
 
     $("#fullscreen").on("click", function(e){
@@ -59,7 +62,7 @@ $(document).ready(function(){
         emptyGenerator(boxes);
         RNDEncounter = randomInt(0,encounters.length);
         var tempHTML =  '<div class="box">' +
-                        '    <h2><img src="images/alert.png" width="40" height="40" /> Scenario</h2>' +
+                        '    <h2 class="handle"><img src="images/alert.png" width="40" height="40" /> Scenario</h2>' +
                         '    <div class="inner">' +
                         '        <div class="encounters"><strong>Scenario</strong> | <span>'+encounters[RNDEncounter]+'</span></div>' +
                         '        <div class="text-center">' +
@@ -84,15 +87,17 @@ $(document).ready(function(){
     $("#addEnvironment").on("click", function(e){
         boxes++;
         emptyGenerator(boxes);
+        RNDBiome = randomInt(0,biome.length);
         RNDWeather = randomInt(0,weather.length);
         RNDTerrain = randomInt(0,terrain.length);
-        RNDEnvironment = randomInt(0,environment.length);
+        RNDStructures = randomInt(0,geoStructure.length);
         var tempHTML =  '<div class="box">' +
-                        '    <h2><img src="images/tree.png" width="40" height="40" /> Environment</h2>' +
+                        '    <h2 class="handle"><img src="images/tree.png" width="40" height="40" /> Environment</h2>' +
                         '    <div class="inner">' +
-                        '        <div class="terrain"><strong>Terrain</strong> | <span>'+weather[RNDWeather]+'</span></div>' +
-                        '        <div class="weather"><strong>Weather</strong> | <span>'+terrain[RNDTerrain]+'</span></div>' +
-                        '        <div class="environment"><strong>Effects</strong> | <span>'+environment[RNDEnvironment]+'</span></div>' +
+                        '        <div class="biome"><strong>Biome</strong> | <span>'+biome[RNDBiome]+'</span></div>' +
+                        '        <div class="terrain"><strong>Terrain</strong> | <span>'+terrain[RNDTerrain]+'</span></div>' +
+                        '        <div class="weather"><strong>Weather</strong> | <span>'+weather[RNDWeather]+'</span></div>' +
+                        '        <div class="environment"><strong>Structures</strong> | <span>'+geoStructure[RNDStructures]+'</span></div>' +
                         '        <div class="text-center">' +
                         '           <a class="reRollEnvironment reroll" href="#"><h4>RE-ROLL <img src="images/dice.png" width="27"' +
                         '           height="27" /></h4></a>' +
@@ -106,12 +111,14 @@ $(document).ready(function(){
 
     $("#generator").on("click", ".reRollEnvironment", function(e){
         e.preventDefault();
+        RNDBiome = randomInt(0,weather.length);
         RNDWeather = randomInt(0,weather.length);
         RNDTerrain = randomInt(0,terrain.length);
-        RNDEnvironment = randomInt(0,environment.length);
-        $(this).parent().parent().find(".terrain span").text(weather[RNDWeather]);
-        $(this).parent().parent().find(".weather span").text(terrain[RNDTerrain]);
-        $(this).parent().parent().find(".environment span").text(environment[RNDEnvironment]);
+        RNDStructures = randomInt(0,geoStructure.length);
+        $(this).parent().parent().find(".biome span").text(biome[RNDBiome]);
+        $(this).parent().parent().find(".weather span").text(weather[RNDWeather]);
+        $(this).parent().parent().find(".terrain span").text(terrain[RNDTerrain]);
+        $(this).parent().parent().find(".environment span").text(geoStructure[RNDStructures]);
         return false;
     });
 
@@ -121,7 +128,7 @@ $(document).ready(function(){
         emptyGenerator(boxes);
         RNDItem = randomInt(0,items.length);
         var tempHTML =  '<div class="box">' +
-                        '    <h2><img src="images/item.png" width="40" height="40" /> Item</h2>' +
+                        '    <h2 class="handle"><img src="images/item.png" width="40" height="40" /> Item</h2>' +
                         '    <div class="inner">' +
                         '        <div class="item_a"><strong>Name</strong> | <span>'+items[RNDItem][0]+'</span></div>' +
                         '        <div class="item_b"><strong>Description</strong> | <span>'+items[RNDItem][2]+'</span></div>' +
@@ -152,7 +159,7 @@ $(document).ready(function(){
         emptyGenerator(boxes);
         RNDMonster = monsterGenerator();
         var tempHTML =  '<div class="box large">' +
-                        '    <h2><img src="images/monster.png" width="40" height="40" /> Monster</h2>' +
+                        '    <h2 class="handle"><img src="images/monster.png" width="40" height="40" /> Monster</h2>' +
                         '    <div class="inner">' +
                         '        <div class="monster_a"><strong>Name</strong> | <span>'+RNDMonster[0]+'</span></div>' +
                         '        <div class="monster_b left two-thirds border-box"><iframe src="https://roll20.net'+RNDMonster[1]+'"></iframe></div>' +
@@ -185,7 +192,7 @@ $(document).ready(function(){
         RNDNPC = NPCGenerator();
 
         var tempHTML =  '<div class="box large">' +
-                        '    <h2><img src="images/npc.png" width="40" height="40" /> NPC</h2>' +
+                        '    <h2 class="handle"><img src="images/npc.png" width="40" height="40" /> NPC</h2>' +
                         '    <div class="inner">' +
                         '        <div class="character_a left one-third border-box">'+RNDNPC[0]+'</div>' +
                         '        <div class="character_b left one-third border-box">'+RNDNPC[1]+'</div>' +
@@ -215,7 +222,7 @@ $(document).ready(function(){
         boxes++;
         emptyGenerator(boxes);
         var tempHTML =  '<div class="box">' +
-                        '    <h2><img src="images/sword.png" width="40" height="40" /> COMBAT RECORDER</h2>' +
+                        '    <h2 class="handle"><img src="images/duel.png" width="40" height="40" /> COMBAT </h2>' +
                         '    <div class="inner text-center">' +
                         '        <div class="one-third left">Name</div>' +
                         '        <div class="one-third left">Initiative</div>' +
@@ -266,7 +273,7 @@ $(document).ready(function(){
         boxes++;
         emptyGenerator(boxes);
         var tempHTML =  '<div class="box small">' +
-                        '    <h2><img src="images/note.png" width="40" height="40" /> NOTE</h2>' +
+                        '    <h2 class="handle"><img src="images/note.png" width="40" height="40" /> NOTE</h2>' +
                         '    <div class="inner text-center">' +
                         '        <textarea placeholder="Notes..."></textarea>' +
                         '        <div class="text-center clear">' +
@@ -276,6 +283,59 @@ $(document).ready(function(){
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
+    });
+
+    //Add Challenge Calculator
+    $("#addChallenge").on("click", function(e){
+        boxes++;
+        emptyGenerator(boxes);
+        var tempHTML =  '<div class="box">' +
+                        '    <h2 class="handle"><img src="images/star.png" width="40" height="40" /> CHALLENGE</h2>' +
+                        '    <div class="inner text-center">' +
+                        '        <div class="one-half left">Party Size</div>' +
+                        '        <div class="one-half left">Party Lv.</div>' +
+                        '        <div class="clear"></div>' +
+                        '        <div class="inner">' +
+                        '            <div class="one-half left challenge-size"><input type="number" min="0" placeholder="E.g. 4 Players" /></div>' +
+                        '            <div class="one-half left challenge-lv"><input type="number" placeholder="E.g. Lv. 7 (Average)" /></div>' +
+                        '            <div class="clear"></div>' +
+                        '        </div>' +
+                        '        <div class="inner calculation">' +
+                        '            result' +
+                        '        </div>' +
+                        '        <div class="text-center clear">' +
+                        '           <a class="calculateChallenge reroll" href="#"><h4>CALCULATE <img src="images/dice.png" width="27"' +
+                        '           height="27" /></h4></a>' +
+                        '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
+                        '           height="20" /></a>' +
+                        '       </div>' +
+                        '    </div>' +
+                        '</div>';
+        generator.append(tempHTML);
+    });
+
+    $("#generator").on("click", ".calculateChallenge", function(e){
+        e.preventDefault();
+        var tempHTML = "<div>";
+            tempHTML += "    <div class='one-half left'><strong>Monster CR</strong></div>";
+            tempHTML += "    <div class='one-half left'><strong>Monster count</strong></div>";
+            tempHTML += "    <div class='clear'></div>";
+            tempHTML += "</div>";
+
+        partyCount = parseInt($(this).parent().parent().find(".challenge-size input").val());
+        partyLevel = parseInt($(this).parent().parent().find(".challenge-lv input").val());
+        var challengeRatings = calculateChallenge(partyCount, partyLevel);
+
+        challengeRatings.forEach(function(item, index){
+            tempHTML += "<div>";
+            tempHTML += "    <div class='one-half left'>" + item['CR'] + "</div>";
+            tempHTML += "    <div class='one-half left'>" + item['Count'] + "</div>";
+            tempHTML += "    <div class='clear'></div>";
+            tempHTML += "</div>";
+        });
+
+        $(this).parent().parent().find(".calculation").show().html(tempHTML);
+        return false;
     });
 
     $("#generator").on("click", ".expand", function(e){
