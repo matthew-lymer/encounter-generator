@@ -12,6 +12,6 @@ Features
 + Challenge Calculator
 + Note Recorder
 
-Version - 0.5
+Version - 0.6
 
 Status - Under construction

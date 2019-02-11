@@ -178,8 +178,8 @@ $(document).ready(function(){
                         '    <h2 class="handle"><img src="images/monster.png" width="25" height="25" /> Monster</h2>' +
                         '    <div class="inner">' +
                         '        <div class="monster_a"><strong>Name</strong> | <span>'+RNDMonster[0]+'</span></div>' +
+                        '        <div class="monster_c right one-third border-box"><iframe src="https://www.google.co.uk/search?igu=1&q=D%26D '+RNDMonster[0]+'&tbm=isch#search"></iframe></div>' +
                         '        <div class="monster_b left two-thirds border-box"><iframe src="https://roll20.net/compendium/dnd5e/'+RNDMonster[0]+'"></iframe></div>' +
-                        '        <div class="monster_c left one-third border-box"><iframe src="https://www.google.co.uk/search?igu=1&q=D%26D '+RNDMonster[0]+'&tbm=isch#search"></iframe></div>' +
                         '        <div class="text-center clear">' +
                         //'           <a class="expand reroll" href="#"><h4>EXPAND</h4></a>' +
                         '          ' + select +

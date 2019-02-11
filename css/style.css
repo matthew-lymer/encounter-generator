@@ -10,7 +10,6 @@
         color:#111;
         font-size: 16px;
         line-height: 25px;
-        min-width: 850px;
     }
 
     h1,
@@ -230,7 +229,6 @@
         left: 0;
         color: #fff;
         z-index: 10;
-        min-width: 850px;
     }
 
     header h1{
@@ -288,6 +286,7 @@
         font-size: 13px;
         line-height: 22px;
         overflow: hidden;
+        max-width: 93%;
     }
 
     .box{
@@ -410,17 +409,16 @@
     a#fullscreen{
         padding: 0 15px;
         margin: 15px 5px 0 5px;
-        background-color: rgb(0,0,0,0.3);
+        background: rgba(0,0,0,0.3);
         display: inline-block;
-        text-align: center;
         vertical-align: middle;
     }
 
     a.roll{
-        margin: 0 5px 10px 5px;
+        margin: 0 5px 1px 5px;
         padding: 0 10px;
         display: block;
-        background-color: rgb(0,0,0,0.3);
+        background: rgba(0,0,0,0.3);
         color: #fff;
     }
 
@@ -518,7 +516,7 @@
     }
 
     a#fullscreen{
-        background-color: rgb(255,255,255,0.7);
+        background-color: rgba(255,255,255,0.7);
         margin: 0 0;
         color: #fff;
     }
@@ -562,4 +560,102 @@
 
     .calculation{
         display: none;
+    }
+
+    @media screen and (max-width:680px){
+        header h1 {
+            padding: 3px 0px 3px 7px;
+            font-size: 19px;
+        }
+
+        #filter{
+            width: 100%;
+            height: auto;
+            text-align: center;
+            padding-top: 47px;
+            position: relative;
+            top: 0;
+        }
+
+        #filter > .inner {
+            padding: 5px 5px 0px 5px;
+        }
+
+        #filter .buyMeACoffee img{
+            padding: 0 0 5px 0;
+            height: 26px!important;
+            width: auto;
+        }
+
+        #dummyHeader,
+        #fullscreen,
+        #reset,
+        a.drag{
+            display: none!important;
+        }
+
+        #main {
+            padding: 10px;
+        }
+
+        a.roll {
+            display: inline-block;
+            margin:  0 0 5px 0;
+        }
+
+        .monster_c.one-third,
+        .monster_b.two-thirds{
+            width: 100%;
+            padding: 0!important;
+        }
+
+        .monster_c.one-third iframe{
+            height: 180px;
+            -ms-zoom: 0.5;
+            border: 2px solid #111;
+            margin-bottom:-90px;
+            width: 200%;
+            -moz-transform: scale(0.5);
+            -moz-transform-origin: 0 0;
+            -o-transform: scale(0.5);
+            -o-transform-origin: 0 0;
+            -webkit-transform: scale(0.5);
+            -webkit-transform-origin: 0 0;
+        }
+
+        .item_c iframe,
+        .monster_b iframe{
+            width: 200%;
+            height: 500px;
+            margin-bottom: -250px;
+            -moz-transform: scale(0.5);
+            -moz-transform-origin: 0 0;
+            -o-transform: scale(0.5);
+            -o-transform-origin: 0 0;
+            -webkit-transform: scale(0.5);
+            -webkit-transform-origin: 0 0;
+        }
+    }
+
+    @media screen and (max-width:540px){
+        .character_a.one-third,
+        .character_b.one-third,
+        .character_c.one-third{
+            width: 100%;
+            padding: 0;
+        }
+    }
+
+    @media screen and (max-width:350px){
+        header h1 {
+            font-size: 17px;
+        }
+
+        header h1 img {
+            padding: 5px 10px 5px 5px;
+        }
+
+        h5 {
+            padding: 2px 0;
+        }
     }
