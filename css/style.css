@@ -581,16 +581,22 @@
             padding: 5px 5px 0px 5px;
         }
 
+        #filter .buyMeACoffee{
+            display: inline-block;
+            vertical-align: middle;
+        }
+
         #filter .buyMeACoffee img{
-            padding: 0 0 5px 0;
-            height: 26px!important;
+            height: 30px!important;
             width: auto;
+            margin: 0 0 5px 0;
         }
 
         #dummyHeader,
         #fullscreen,
         #reset,
-        a.drag{
+        a.drag,
+        #addNote + br{
             display: none!important;
         }
 
