@@ -60,7 +60,6 @@
         padding: 0 10px
     }
 
-    select,
     input[type='checkbox']{
         vertical-align: middle;
         padding: 0;
@@ -68,6 +67,16 @@
         height: 29px;
         min-width: 80px;
         line-height: 29;
+    }
+
+    select{
+        padding: 0 15px;
+        min-width: 100px;
+        margin: 15px 5px 0 5px;
+        height: 38px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
     }
 
     input[type='checkbox']{
@@ -308,7 +317,7 @@
 
     .box-placeholder:after{
         content:"DRAG BOX HERE";
-        font-size: 20px;
+        font-size: 17px;
         line-height:30px;
         padding: 60px 0 0 0;
         box-sizing: border-box;

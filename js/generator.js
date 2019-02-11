@@ -163,15 +163,26 @@ $(document).ready(function(){
     $("#addMonster").on("click", function(e){
         boxes++;
         emptyGenerator(boxes);
-        RNDMonster = monsterGenerator();
+        RNDMonster = monsterGenerator("all");
+        var select = '<select id="monsterCR">';
+            select += '<option name="all">all</option>';
+
+        challengeRatingsInvert.forEach(function(value) {
+            select += '<option name="'+value+'">CR '+value+'</option>';
+        });
+
+        select += '</select>';
+
+
         var tempHTML =  '<div class="box large">' +
                         '    <h2 class="handle"><img src="images/monster.png" width="25" height="25" /> Monster</h2>' +
                         '    <div class="inner">' +
                         '        <div class="monster_a"><strong>Name</strong> | <span>'+RNDMonster[0]+'</span></div>' +
-                        '        <div class="monster_b left two-thirds border-box"><iframe src="https://roll20.net'+RNDMonster[1]+'"></iframe></div>' +
+                        '        <div class="monster_b left two-thirds border-box"><iframe src="https://roll20.net/compendium/dnd5e/'+RNDMonster[0]+'"></iframe></div>' +
                         '        <div class="monster_c left one-third border-box"><iframe src="https://www.google.co.uk/search?igu=1&q=D%26D '+RNDMonster[0]+'&tbm=isch#search"></iframe></div>' +
                         '        <div class="text-center clear">' +
-                        '           <a class="expand reroll" href="#"><h4>EXPAND</h4></a>' +
+                        //'           <a class="expand reroll" href="#"><h4>EXPAND</h4></a>' +
+                        '          ' + select +
                         '           <a class="reRollMonster reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
                         '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
@@ -186,10 +197,18 @@ $(document).ready(function(){
 
     $("#generator").on("click", ".reRollMonster", function(e){
         e.preventDefault();
-        RNDMonster = monsterGenerator();
-        $(this).parent().parent().find(".monster_a span").text(RNDMonster[0]);
-        $(this).parent().parent().find(".monster_b iframe").attr("src","https://roll20.net" + RNDMonster[1]);
-        $(this).parent().parent().find(".monster_c iframe").attr("src","https://www.google.co.uk/search?igu=1&q=D%26D " + RNDMonster[0] + "&tbm=isch#search");
+        var monsterCR = $("#monsterCR").val();
+        RNDMonster = monsterGenerator(monsterCR);
+
+        if(RNDMonster == 0){
+            alert("No monsters found for this CR");
+        }
+        else{
+            $(this).parent().parent().find(".monster_a span").text(RNDMonster[0]);
+            $(this).parent().parent().find(".monster_b iframe").attr("src","https://roll20.net/compendium/dnd5e/" + RNDMonster[0]);
+            $(this).parent().parent().find(".monster_c iframe").attr("src","https://www.google.co.uk/search?igu=1&q=D%26D " + RNDMonster[0] + "&tbm=isch#search");
+        }
+
         return false;
     });
 
