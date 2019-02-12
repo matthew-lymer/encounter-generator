@@ -377,6 +377,36 @@
         padding: 0 0 0 10px;
     }
 
+    .monster_c.one-third iframe{
+        -ms-zoom: 0.5;
+        border: 2px solid #111;
+        margin-bottom:-90px;
+        width: 200%;
+        height: 400px;
+        margin-bottom:-200px;
+        -moz-transform: scale(0.5);
+        -moz-transform-origin: 0 0;
+        -o-transform: scale(0.5);
+        -o-transform-origin: 0 0;
+        -webkit-transform: scale(0.5);
+        -webkit-transform-origin: 0 0;
+    }
+
+    .ability{
+        padding: 10px;
+        background: #ccc
+    }
+
+    .ability + .ability{
+        margin-top:10px;
+    }
+
+    .actions{
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+
+    /*
     .box.expandBox{
         width: 100%;
         z-index: 9;
@@ -400,6 +430,7 @@
     .box.expandBox .monster_b iframe {
         height: 550px;
     }
+    */
 
     a.linkButton,
     a.roll,
@@ -616,7 +647,7 @@
         }
 
         .monster_c.one-third iframe{
-            height: 180px;
+            height: 160px;
             -ms-zoom: 0.5;
             border: 2px solid #111;
             margin-bottom:-90px;

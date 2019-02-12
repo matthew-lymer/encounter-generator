@@ -6,6 +6,7 @@ $(document).ready(function(){
         RNDItem,
         RNDMonster,
         RNDMonsterImage,
+        RNDTrap,
         RNDNPC,
         generator = $("#generator"),
         boxes = 0,
@@ -160,12 +161,172 @@ $(document).ready(function(){
     });
 
     //Generate Monster
+    function formatMonster(monsterElement){
+        var monster_a = "",
+            monster_b = "",
+            monster_c = "";
+
+        if(typeof monsterElement["name"] != "undefined") {
+            monster_a += "<div><strong>Name</strong> | " + monsterElement["name"] + "</div>";
+        }
+        if(typeof monsterElement["size"] != "undefined") {
+            monster_a += "<div><strong>Size</strong> | " + monsterElement["size"] + "</div>";
+        }
+        if(typeof monsterElement["type"] != "undefined") {
+            monster_a += "<div><strong>Type</strong> | " + monsterElement["type"] + " " + monsterElement["subtype"] + "</div>";
+        }
+        if(typeof monsterElement["challenge_rating"] != "undefined") {
+            monster_a += "<div><strong>CR</strong> | " + monsterElement["challenge_rating"] + "</div>";
+        }
+        if(typeof monsterElement["alignment"] != "undefined") {
+            monster_a += "<div><strong>Alignment</strong> | " + monsterElement["alignment"] + "</div>";
+        }
+        if(typeof monsterElement["armor_class"] != "undefined") {
+            monster_a += "<div><strong>AC</strong> | " + monsterElement["armor_class"] + "</div>";
+        }
+        if(typeof monsterElement["hit_points"] != "undefined") {
+            monster_a += "<div><strong>HP</strong> | " + monsterElement["hit_points"] + " (" + monsterElement["hit_dice"] + ")</div>";
+        }
+        if(typeof monsterElement["speed"] != "undefined") {
+            monster_a += "<div><strong>Speed</strong> | " + monsterElement["speed"] + "</div>";
+        }
+        if(typeof monsterElement["perception"] != "undefined") {
+            monster_a += "<div><strong>Perception</strong> | " + monsterElement["perception"] + "</div>";
+        }
+        if(typeof monsterElement["senses"] != "undefined" && monsterElement["senses"] !== "") {
+            monster_a += "<div><strong>Senses</strong> | " + monsterElement["senses"] + "</div>";
+        }
+        if(typeof monsterElement["languages"] != "undefined" && monsterElement["languages"] !== "") {
+            monster_a += "<div><strong>Languages</strong> | " + monsterElement["languages"] + "</div>";
+        }
+        if(typeof monsterElement["armor_desc"] != "undefined") {
+            monster_a += "<div><strong>Armor Type</strong> | " + monsterElement["armor_desc"] + "</div>";
+        }
+
+        if(typeof monsterElement["strength"] != "undefined") {
+            monster_b += "<div><strong>Strength</strong> | " + monsterElement["strength"] + "</div>";
+        }
+        if(typeof monsterElement["dexterity"] != "undefined") {
+            monster_b += "<div><strong>Dexterity</strong> | " + monsterElement["dexterity"] + "</div>";
+        }
+        if(typeof monsterElement["constitution"] != "undefined") {
+            monster_b += "<div><strong>Constitution</strong> | " + monsterElement["constitution"] + "</div>";
+        }
+        if(typeof monsterElement["intelligence"] != "undefined") {
+            monster_b += "<div><strong>Intelligence</strong> | " + monsterElement["intelligence"] + "</div>";
+        }
+        if(typeof monsterElement["wisdom"] != "undefined") {
+            monster_b += "<div><strong>Wisdom</strong> | " + monsterElement["wisdom"] + "</div>";
+        }
+        if(typeof monsterElement["charisma"] != "undefined") {
+            monster_b += "<div><strong>Charisma</strong> | " + monsterElement["charisma"] + "</div>";
+        }
+        if(typeof monsterElement["constitution_save"] != "undefined" && monsterElement["constitution_save"] !== "") {
+            monster_b += "<div><strong>Save (Con)</strong> | +" + monsterElement["constitution_save"] + "</div>";
+        }
+        if(typeof monsterElement["intelligence_save"] != "undefined" && monsterElement["intelligence_save"] !== "") {
+            monster_b += "<div><strong>Save (Int)</strong> | +" + monsterElement["intelligence_save"] + "</div>";
+        }
+        if(typeof monsterElement["wisdom_save"] != "undefined" && monsterElement["wisdom_save"] !== "") {
+            monster_b += "<div><strong>Save (Wis)</strong> | +" + monsterElement["wisdom_save"] + "</div>";
+        }
+        if(typeof monsterElement["strength_save"] != "undefined" && monsterElement["strength_save"] !== "") {
+            monster_b += "<div><strong>Save (Str)</strong> | +" + monsterElement["strength_save"] + "</div>";
+        }
+        if(typeof monsterElement["dexterity_save"] != "undefined" && monsterElement["dexterity_save"] !== "") {
+            monster_b += "<div><strong>Save (Dex)</strong> | +" + monsterElement["dexterity_save"] + "</div>";
+        }
+        if(typeof monsterElement["charisma_save"] != "undefined" && monsterElement["charisma_save"] !== "") {
+            monster_b += "<div><strong>Save (Cha)</strong> | +" + monsterElement["charisma_save"] + "</div>";
+        }
+        if(typeof monsterElement["damage_vulnerabilities"] != "undefined" && monsterElement["damage_vulnerabilities"] !== "") {
+            monster_b += "<div><strong>Vulnerabilities</strong> | " + monsterElement["damage_vulnerabilities"] + "</div>";
+        }
+        if(typeof monsterElement["damage_resistances"] != "undefined" && monsterElement["damage_resistances"] !== "") {
+            monster_b += "<div><strong>Resistances</strong> | " + monsterElement["damage_resistances"] + "</div>";
+        }
+        if(typeof monsterElement["damage_immunities"] != "undefined" && monsterElement["damage_immunities"] !== "") {
+            monster_b += "<div><strong>Immunities</strong> | " + monsterElement["damage_immunities"] + "</div>";
+        }
+        if(typeof monsterElement["condition_immunities"] != "undefined" && monsterElement["condition_immunities"] !== "") {
+            monster_b += "<div><strong>Condition Immunities</strong> | " + monsterElement["condition_immunities"] + "</div>";
+        }
+
+        monster_c += "<hr>";
+
+        if(typeof monsterElement["special_abilities"] != "undefined") {
+            monster_c += "<div>";
+            monster_c += "<div><strong>Abilities</strong></div>";
+
+            monsterElement["special_abilities"].forEach(function(value){
+                monster_c += "<div class='ability'>";
+                monster_c += "<div><strong>Name</strong> | " + value["name"] + "</div>";
+                monster_c += "<div><strong>Description</strong> | " + value["desc"] + "</div>";
+                monster_c += "<div><strong>Attack Bonus</strong> | +" + value["attack_bonus"] + "</div>";
+
+                if(typeof value["damage_dice"] != "undefined") {
+                    monster_c += "<div><strong>Damage</strong> | " + value["damage_dice"] + " + " + value["damage_bonus"] + "</div>";
+                }
+
+                monster_c += "</div>";
+            });
+            monster_c += "</div><hr>";
+        }
+
+        if(typeof monsterElement["actions"] != "undefined") {
+            monster_c += "<div class='left one-half actions'>";
+            monster_c += "<div><strong>Actions</strong></div>";
+
+            monsterElement["actions"].forEach(function(value){
+                monster_c += "<div class='ability'>";
+                monster_c += "<div><strong>Name</strong> | " + value["name"] + "</div>";
+                monster_c += "<div><strong>Description</strong> | " + value["desc"] + "</div>";
+                monster_c += "<div><strong>Attack Bonus</strong> | +" + value["attack_bonus"] + "</div>";
+
+                if(typeof value["damage_dice"] != "undefined") {
+                    monster_c += "<div><strong>Damage</strong> | " + value["damage_dice"] + " + " + value["damage_bonus"] + "</div>";
+                }
+
+                monster_c += "</div>";
+            });
+            monster_c += "</div>";
+        }
+
+        if(typeof monsterElement["legendary_actions"] != "undefined") {
+            monster_c += "<div class='left one-half'>";
+            monster_c += "<div><strong>Legendary Actions</strong></div>";
+
+            monsterElement["legendary_actions"].forEach(function(value){
+                monster_c += "<div class='ability'>";
+                monster_c += "<div><strong>Name</strong> | " + value["name"] + "</div>";
+                monster_c += "<div><strong>Description</strong> | " + value["desc"] + "</div>";
+                monster_c += "<div><strong>Attack Bonus</strong> +| " + value["attack_bonus"] + "</div>";
+
+                if(typeof value["damage_dice"] != "undefined") {
+                    monster_c += "<div><strong>Damage</strong> | " + value["damage_dice"] + " + " + value["damage_bonus"] + "</div>";
+                }
+
+                monster_c += "</div>";
+            });
+
+            monster_c += "</div>";
+        }
+
+        monster_c += "<div class='clear'></div>";
+
+        return [monster_a, monster_b,monster_c];
+    }
+
     $("#addMonster").on("click", function(e){
         boxes++;
         emptyGenerator(boxes);
-        RNDMonster = monsterGenerator("all");
+        RNDMonster = monsterGenerator("Any CR");
         var select = '<select id="monsterCR">';
-            select += '<option name="all">all</option>';
+            select += '<option name="all">Any CR</option>',
+            formattedMonster = formatMonster(RNDMonster),
+            monster_a = formattedMonster[0],
+            monster_b = formattedMonster[1],
+            monster_c = formattedMonster[2];
 
         challengeRatingsInvert.forEach(function(value) {
             select += '<option name="'+value+'">CR '+value+'</option>';
@@ -173,16 +334,17 @@ $(document).ready(function(){
 
         select += '</select>';
 
-
         var tempHTML =  '<div class="box large">' +
                         '    <h2 class="handle"><img src="images/monster.png" width="25" height="25" /> Monster</h2>' +
                         '    <div class="inner">' +
-                        '        <div class="monster_a"><strong>Name</strong> | <span>'+RNDMonster[0]+'</span></div>' +
-                        '        <div class="monster_c right one-third border-box"><iframe src="https://www.google.co.uk/search?igu=1&q=D%26D '+RNDMonster[0]+'&tbm=isch#search"></iframe></div>' +
-                        '        <div class="monster_b left two-thirds border-box"><iframe src="https://roll20.net/compendium/dnd5e/'+RNDMonster[0]+'"></iframe></div>' +
+                        '        <div class="monster_a left one-third border-box">' + monster_a + '</div>' +
+                        '        <div class="monster_b left one-third border-box">' + monster_b + '</div>' +
+                        '        <div class="monster_c right one-third border-box">' +
+                                    '<iframe src="https://www.google.co.uk/search?igu=1&q=D%26D '+RNDMonster["name"]+'&tbm=isch#search"></iframe>' +
+                        '        </div>' +
+                        '        <div class="monster_d left clear border-box">' + monster_c + '</div>' +
                         '        <div class="text-center clear">' +
-                        //'           <a class="expand reroll" href="#"><h4>EXPAND</h4></a>' +
-                        '          ' + select +
+                                    select +
                         '           <a class="reRollMonster reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
                         '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
@@ -198,15 +360,17 @@ $(document).ready(function(){
     $("#generator").on("click", ".reRollMonster", function(e){
         e.preventDefault();
         var monsterCR = $("#monsterCR").val();
-        RNDMonster = monsterGenerator(monsterCR);
+        var RNDMonster = monsterGenerator(monsterCR);
+        var formattedMonster = formatMonster(RNDMonster);
 
         if(RNDMonster == 0){
             alert("No monsters found for this CR");
         }
         else{
-            $(this).parent().parent().find(".monster_a span").text(RNDMonster[0]);
-            $(this).parent().parent().find(".monster_b iframe").attr("src","https://roll20.net/compendium/dnd5e/" + RNDMonster[0]);
-            $(this).parent().parent().find(".monster_c iframe").attr("src","https://www.google.co.uk/search?igu=1&q=D%26D " + RNDMonster[0] + "&tbm=isch#search");
+            $(this).parent().parent().find(".monster_a").html(formattedMonster[0]);
+            $(this).parent().parent().find(".monster_b").html(formattedMonster[1]);
+            $(this).parent().parent().find(".monster_d").html(formattedMonster[2]);
+            $(this).parent().parent().find(".monster_c iframe").attr("src","https://www.google.co.uk/search?igu=1&q=D%26D " + RNDMonster["name"] + "&tbm=isch#search");
         }
 
         return false;
@@ -373,6 +537,37 @@ $(document).ready(function(){
         return false;
     });
 
+
+        //Generate Scenario
+        $("#addTrap").on("click", function(e){
+            boxes++;
+            emptyGenerator(boxes);
+            RNDTrap = randomInt(0,traps.length);
+            var tempHTML =  '<div class="box small">' +
+                            '    <h2 class="handle"><img src="images/trap.png" width="25" height="25" /> Trap</h2>' +
+                            '    <div class="inner">' +
+                            '        <div class="trap"><strong>Scenario</strong> | <span>'+traps[RNDTrap]+'</span></div>' +
+                            '        <div class="text-center">' +
+                            '           <a class="reRollScenario reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                            '           height="24" /></h4></a>' +
+                            '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
+                            '           height="20" /></a>' +
+                            '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                            '           height="26" /></a>' +
+                            '       </div>' +
+                            '    </div>' +
+                            '</div>';
+            generator.append(tempHTML);
+        });
+
+        $("#generator").on("click", ".reRollScenario", function(e){
+            e.preventDefault();
+            RNDTrap = randomInt(0,traps.length);
+            $(this).parent().parent().find(".trap span").text(traps[RNDTrap]);
+            return false;
+        });
+
+    /*
     $("#generator").on("click", ".expand", function(e){
         e.preventDefault();
         var parentBox = $(this).parent().parent().parent(".box");
@@ -386,6 +581,7 @@ $(document).ready(function(){
         }
         return false;
     });
+    */
 
     $("#reset").on("click", function(e){
         e.preventDefault();
