@@ -96,6 +96,18 @@
         resize:none;
     }
 
+    input[type='text'].monsterName{
+        padding: 0 15px;
+        margin: 15px 5px 0 5px;
+        height: 38px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        width: 150px;
+        border: 1px solid #aaa;
+        border-radius: 3px;
+    }
+
     textarea{
         background: #fff;
         outline:none;

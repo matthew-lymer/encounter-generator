@@ -1784,20 +1784,43 @@ function NPCGenerator(){
     return [NPCHtml1,NPCHtml2,NPCHtml3];
 }
 
-function monsterGenerator(monsterCR){
+function monsterGenerator(monsterCR,monsterName){
     var monsterHTML,
         monsterID,
-        monstersDetailsFiltered = [];
+        monstersDetailsFiltered = [],
+        checkCR = false,
+        checkName = false;
 
-        console.log(monsterCR);
-    if(monsterCR == "Any CR"){
+    if(monsterCR !== "Any CR"){
+        checkCR = true;
+    }
+
+    if(monsterName.length > 0){
+        checkName = true;
+    }
+
+    if(checkCR == false && checkName == false){
         monsterID = randomInt(0,monsters.length);
         return monsters[monsterID];
     }
     else{
         monsters.forEach(function(value){
-            if("CR " + value["challenge_rating"] == monsterCR){
-                monstersDetailsFiltered.push(value);
+            if(checkName){
+                if(checkCR){
+                    if(value["name"].toLowerCase().indexOf(monsterName.toLowerCase()) !== -1 && "CR " + value["challenge_rating"] == monsterCR){
+                        monstersDetailsFiltered.push(value);
+                    }
+                }
+                else{
+                    if(value["name"].toLowerCase().indexOf(monsterName.toLowerCase()) !== -1){
+                        monstersDetailsFiltered.push(value);
+                    }
+                }
+            }
+            else{
+                if("CR " + value["challenge_rating"] == monsterCR){
+                    monstersDetailsFiltered.push(value);
+                }
             }
         });
 

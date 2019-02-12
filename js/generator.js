@@ -320,8 +320,8 @@ $(document).ready(function(){
     $("#addMonster").on("click", function(e){
         boxes++;
         emptyGenerator(boxes);
-        RNDMonster = monsterGenerator("Any CR");
-        var select = '<select id="monsterCR">';
+        RNDMonster = monsterGenerator("Any CR","");
+        var select = '<select class="monsterCR">';
             select += '<option name="all">Any CR</option>',
             formattedMonster = formatMonster(RNDMonster),
             monster_a = formattedMonster[0],
@@ -344,6 +344,7 @@ $(document).ready(function(){
                         '        </div>' +
                         '        <div class="monster_d left clear border-box">' + monster_c + '</div>' +
                         '        <div class="text-center clear">' +
+                        '               <input type="text" class="monsterName" placeholder="Monster name..." />' +
                                     select +
                         '           <a class="reRollMonster reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
                         '           height="24" /></h4></a>' +
@@ -359,12 +360,13 @@ $(document).ready(function(){
 
     $("#generator").on("click", ".reRollMonster", function(e){
         e.preventDefault();
-        var monsterCR = $("#monsterCR").val();
-        var RNDMonster = monsterGenerator(monsterCR);
+        var monsterCR = $(this).parent().parent().find(".monsterCR").val();
+        var monsterName = $(this).parent().parent().find(".monsterName").val();
+        var RNDMonster = monsterGenerator(monsterCR,monsterName);
         var formattedMonster = formatMonster(RNDMonster);
 
         if(RNDMonster == 0){
-            alert("No monsters found for this CR");
+            alert("No monsters found for this search.");
         }
         else{
             $(this).parent().parent().find(".monster_a").html(formattedMonster[0]);
