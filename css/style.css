@@ -98,14 +98,46 @@
 
     input[type='text'].monsterName{
         padding: 0 15px;
-        margin: 15px 5px 0 5px;
+        margin: 0 5px 0 5px;
         height: 38px;
         display: inline-block;
         text-align: center;
         vertical-align: middle;
-        width: 150px;
+        width: 250px;
         border: 1px solid #aaa;
         border-radius: 3px;
+    }
+
+    .monsterSuggestion{
+        display: inline-block;
+        vertical-align: top;
+        margin: 10px 0 0 0;
+        position: relative;
+        text-align: left;
+    }
+
+    .monsterSuggestion .results {
+        position: absolute;
+        top: 46px;
+        left: 5px;
+        width: 360px;
+        background: #eff5f7;
+        display: none;
+        z-index: 10;
+        max-height: 296px;
+        overflow: auto;
+        box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
+    }
+
+    .monsterSuggestion .results div{
+        padding:5px 10px;
+        border-bottom: 1px solid #aaa;
+        cursor: pointer;
+    }
+
+    .monsterSuggestion .results div:hover{
+        background: #3081a0;
+        color: #fff;
     }
 
     textarea{
@@ -297,7 +329,6 @@
         position: relative;
         font-size: 13px;
         line-height: 22px;
-        overflow: hidden;
         max-width: 93%;
     }
 
@@ -486,7 +517,8 @@
     }
 
     a.remove,
-    a.drag{
+    a.drag,
+    a.save{
         background-color:rgba(208, 13, 13, 0.5);
         position: absolute;
         top:0;
@@ -502,6 +534,13 @@
 
     a.drag{
         right: 40px;
+        padding: 7px;
+        height: 26px;
+        width: 26px;
+    }
+
+    a.save{
+        right: 80px;
         padding: 7px;
         height: 26px;
         width: 26px;
@@ -527,6 +566,19 @@
 
     a.drag:active{
         background-color:rgba(95, 194, 210,0.8);
+    }
+
+    a.save{
+        cursor: pointer;
+        background-color: rgba(232, 231, 139, 0.7);
+    }
+
+    a.save:hover{
+        background-color: rgba(232, 231, 139, 0.4);
+    }
+
+    a.save:active{
+        background-color: rgba(232, 231, 139, 0.95);
     }
 
     a.remove:hover{
@@ -603,6 +655,13 @@
 
     .calculation{
         display: none;
+    }
+
+    .top-controls > input,
+    .top-controls > select,
+    .top-controls > a.reroll{
+        margin-top:10px!important;
+        margin-bottom:15px!important;
     }
 
     @media screen and (max-width:680px){

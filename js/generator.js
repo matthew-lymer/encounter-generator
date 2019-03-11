@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    console.log(Cookies.get('monsters'));
     var RNDEncounter,
         RNDWeather,
         RNDTerrain,
@@ -57,6 +58,28 @@ $(document).ready(function(){
         return false;
     });
 
+    $("#generator").on("click", ".save", function(e){
+        e.preventDefault();
+
+        var type = $(this).data("type");
+
+        if(type == "monster"){
+            //console.log($(this).parent().next(".monster_a").html().length);
+            if($(this).parent().next(".monster_a").html().length > 0){
+                var monsterCookie = Cookies.get('monsters') + "";
+                monsterCookie += "_*|*_" + $(this).parent().find(".monsterName").val();
+                console.log(monsterCookie);
+                Cookies.set('monsters', monsterCookie, { expires: 365 });
+                alert("Module saved.")
+            }
+            else{
+                alert("No monster to save.")
+            }
+        }
+
+        return false;
+    });
+
     //Generate Scenario
     $("#addScenario").on("click", function(e){
         boxes++;
@@ -67,7 +90,7 @@ $(document).ready(function(){
                         '    <div class="inner">' +
                         '        <div class="encounters"><strong>Scenario</strong> | <span>'+encounters[RNDEncounter]+'</span></div>' +
                         '        <div class="text-center">' +
-                        '           <a class="reRollScenario reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                        '           <a class="reRollScenario reroll" href="#"><h4>ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
                         '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
@@ -102,7 +125,7 @@ $(document).ready(function(){
                         '        <div class="weather"><strong>Weather</strong> | <span>'+weather[RNDWeather]+'</span></div>' +
                         '        <div class="environment"><strong>Structures</strong> | <span>'+geoStructure[RNDStructures]+'</span></div>' +
                         '        <div class="text-center">' +
-                        '           <a class="reRollEnvironment reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                        '           <a class="reRollEnvironment reroll" href="#"><h4>ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
                         '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
@@ -139,7 +162,7 @@ $(document).ready(function(){
                         '        <div class="item_b"><strong>Description</strong> | <span>'+items[RNDItem][2]+'</span></div>' +
                         '        <div class="item_c"><iframe src="https://roll20.net'+items[RNDItem][1]+'#pageAttrs"></iframe></div>' +
                         '        <div class="text-center">' +
-                        '           <a class="reRollItem reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                        '           <a class="reRollItem reroll" href="#"><h4>ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
                         '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
@@ -320,39 +343,37 @@ $(document).ready(function(){
     $("#addMonster").on("click", function(e){
         boxes++;
         emptyGenerator(boxes);
-        RNDMonster = monsterGenerator("Any CR","");
-        var select = '<select class="monsterCR">';
-            select += '<option name="all">Any CR</option>',
-            formattedMonster = formatMonster(RNDMonster),
-            monster_a = formattedMonster[0],
-            monster_b = formattedMonster[1],
-            monster_c = formattedMonster[2];
+        var selection = '<div class="monsterSuggestion"><input type="text" class="monsterName" placeholder="Monster name..." /><div class="results"></div></div>';
+
+        selection += '<select style="" class="monsterCR">';
+        selection += '<option name="all">Any CR</option>';
 
         challengeRatingsInvert.forEach(function(value) {
-            select += '<option name="'+value+'">CR '+value+'</option>';
+            selection += '<option name="'+value+'">CR '+value+'</option>';
         });
 
-        select += '</select>';
+        selection += '</select>';
+        selection += '<a class="reRollMonster reroll" style="display:none" href="#"><h4>SEARCH&nbsp;&nbsp;<img src="images/dice.png" width="24" height="24" /></h4></a>';
+        selection += '<a class="randomMonster reroll" style="" href="#"><h4>RANDOM&nbsp;&nbsp;<img src="images/dice.png" width="24" height="24" /></h4></a>';
 
         var tempHTML =  '<div class="box large">' +
                         '    <h2 class="handle"><img src="images/monster.png" width="25" height="25" /> Monster</h2>' +
                         '    <div class="inner">' +
-                        '        <div class="monster_a left one-third border-box">' + monster_a + '</div>' +
-                        '        <div class="monster_b left one-third border-box">' + monster_b + '</div>' +
-                        '        <div class="monster_c right one-third border-box">' +
-                                    '<iframe src="https://www.google.co.uk/search?igu=1&q=D%26D '+RNDMonster["name"]+'&tbm=isch#search"></iframe>' +
-                        '        </div>' +
-                        '        <div class="monster_d left clear border-box">' + monster_c + '</div>' +
-                        '        <div class="text-center clear">' +
-                        '               <input type="text" class="monsterName" placeholder="Monster name..." />' +
-                                    select +
-                        '           <a class="reRollMonster reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
-                        '           height="24" /></h4></a>' +
+                        '        <div class="text-center top-controls">' +
+                                    selection +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
                         '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
                         '           height="26" /></a>' +
+                        '           <a class="save" data-type="monster" href="#"><img src="images/save.png" width="26"' +
+                        '           height="26" /></a>' +
                         '       </div>' +
+                        '        <div class="monster_a border-box"></div>' +
+                        '        <div class="monster_b left one-third border-box"></div>' +
+                        '        <div class="monster_c left one-third border-box"></div>' +
+                        '        <div class="monster_d left one-third border-box"></div>' +
+                        '        <div class="clear"></div>' +
+                        '        <div class="monster_e border-box"></div>' +
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
@@ -369,13 +390,88 @@ $(document).ready(function(){
             alert("No monsters found for this search.");
         }
         else{
-            $(this).parent().parent().find(".monster_a").html(formattedMonster[0]);
-            $(this).parent().parent().find(".monster_b").html(formattedMonster[1]);
-            $(this).parent().parent().find(".monster_d").html(formattedMonster[2]);
-            $(this).parent().parent().find(".monster_c iframe").attr("src","https://www.google.co.uk/search?igu=1&q=D%26D " + RNDMonster["name"] + "&tbm=isch#search");
+            $(this).parent().parent().find(".monster_a").html("<hr>");
+            $(this).parent().parent().find(".monster_b").html(formattedMonster[0]);
+            $(this).parent().parent().find(".monster_c").html(formattedMonster[1]);
+            $(this).parent().parent().find(".monster_d").html("<iframe src='https://www.google.co.uk/search?igu=1&q=D%26D " + RNDMonster["name"] + "&tbm=isch#search'></iframe>");
+            $(this).parent().parent().find(".monster_e").html(formattedMonster[2]);
         }
 
         return false;
+    });
+
+    $("#generator").on("click", ".randomMonster", function(e){
+        e.preventDefault();
+        $(this).parent().parent().find(".monsterName").val("");
+        var monsterCR = $(this).parent().parent().find(".monsterCR").val();
+        var RNDMonster = monsterGenerator(monsterCR,"");
+        var formattedMonster = formatMonster(RNDMonster);
+
+        if(RNDMonster == 0){
+            alert("No monsters found for this search.");
+        }
+        else{
+            $(this).parent().parent().find(".monster_a").html("<hr>");
+            $(this).parent().parent().find(".monster_b").html(formattedMonster[0]);
+            $(this).parent().parent().find(".monster_c").html(formattedMonster[1]);
+            $(this).parent().parent().find(".monster_d").html("<iframe src='https://www.google.co.uk/search?igu=1&q=D%26D " + RNDMonster["name"] + "&tbm=isch#search'></iframe>");
+            $(this).parent().parent().find(".monster_e").html(formattedMonster[2]);
+        }
+
+        return false;
+    });
+
+    $("#generator").on("keyup", ".monsterName", function(e){
+        var query = $(this).val();
+        var results = $(this).parent().find(".results");
+        var monsterList = "";
+        var count = 0;
+        var queryCR = $(this).parent().parent().find(".monsterCR").val();
+
+        if(query.length >= 1){
+            monsters.forEach(function(value){
+                if(queryCR == "Any CR"){
+                    if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1){
+                        monsterList += "<div class='monsterSelection'>" + value["name"] + "</div>";
+                        count++;
+                    }
+                }
+                else{
+                    if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && "CR " + value["challenge_rating"] == queryCR){
+                        monsterList += "<div class='monsterSelection'>" + value["name"] + "</div>";
+                        count++;
+                    }
+                }
+            });
+
+            if(count == 0){
+                monsterList += "<div>No monsters found for this CR</div>";
+            }
+
+            results.html(monsterList);
+            results.show();
+        }
+        else{
+            results.hide();
+        }
+    });
+
+    $("#generator").on("focus", ".monsterName", function(e){
+        $("#generator .monsterName").trigger("keyup");
+    });
+
+    $("#generator").on("click", ".monsterSelection", function(e){
+        var selection = $(this).text();
+        var input = $(this).parent().parent().find("input").val(selection);
+        $(this).parent().parent().parent().find(".reRollMonster").trigger("click");
+        $(this).parent().hide();
+    });
+
+    $("#generator").on("blur", ".monsterName", function(e){
+        var results = $(this).parent().find(".results");
+        setTimeout(function(){
+            results.hide();
+        },100);
     });
 
     //Generate NPC
@@ -391,7 +487,7 @@ $(document).ready(function(){
                         '        <div class="character_b left one-third border-box">'+RNDNPC[1]+'</div>' +
                         '        <div class="character_c left one-third border-box">'+RNDNPC[2]+'</div>' +
                         '        <div class="text-center clear">' +
-                        '           <a class="reRollMonster reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                        '           <a class="reRollNPC reroll" href="#"><h4>ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
                         '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
@@ -403,7 +499,7 @@ $(document).ready(function(){
         generator.append(tempHTML);
     });
 
-    $("#generator").on("click", ".reRollMonster", function(e){
+    $("#generator").on("click", ".reRollNPC", function(e){
         e.preventDefault();
         RNDNPC = NPCGenerator();
         $(this).parent().parent().find(".character_a").html(RNDNPC[0]);
@@ -550,7 +646,7 @@ $(document).ready(function(){
                             '    <div class="inner">' +
                             '        <div class="trap"><strong>Scenario</strong> | <span>'+traps[RNDTrap]+'</span></div>' +
                             '        <div class="text-center">' +
-                            '           <a class="reRollScenario reroll" href="#"><h4>RE-ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                            '           <a class="reRollScenario reroll" href="#"><h4>ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
                             '           height="24" /></h4></a>' +
                             '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                             '           height="20" /></a>' +
