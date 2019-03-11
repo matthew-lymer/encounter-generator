@@ -1,5 +1,17 @@
 $(document).ready(function(){
-    console.log(Cookies.get('monsters'));
+    //initialize Cookies
+    if(typeof(Cookies.get('monsters')) != "undefined"){
+        var monsterCookie = Cookies.get('monsters').split("_*|*_");
+
+        monsterCookie.forEach(function(value) {
+            if(value !== "undefined"){
+                $("#addMonster").trigger("click");
+                $("#generator .box").last().find(".monsterName").val(value);
+                $("#generator .box").last().find(".reRollMonster").trigger("click");
+            }
+        });
+    }
+
     var RNDEncounter,
         RNDWeather,
         RNDTerrain,
@@ -68,7 +80,6 @@ $(document).ready(function(){
             if($(this).parent().next(".monster_a").html().length > 0){
                 var monsterCookie = Cookies.get('monsters') + "";
                 monsterCookie += "_*|*_" + $(this).parent().find(".monsterName").val();
-                console.log(monsterCookie);
                 Cookies.set('monsters', monsterCookie, { expires: 365 });
                 alert("Module saved.")
             }
