@@ -518,7 +518,8 @@
 
     a.remove,
     a.drag,
-    a.save{
+    a.save,
+    a.unsave{
         background-color:rgba(208, 13, 13, 0.5);
         position: absolute;
         top:0;
@@ -539,11 +540,12 @@
         width: 26px;
     }
 
-    a.save{
+    a.save,
+    a.unsave{
         right: 80px;
-        padding: 7px;
-        height: 26px;
-        width: 26px;
+        width: 52px;
+        padding: 2px 7px;
+        height: 36px;
     }
 
     h2.handle{
@@ -579,6 +581,19 @@
 
     a.save:active{
         background-color: rgba(232, 231, 139, 0.95);
+    }
+
+    a.unsave{
+        cursor: pointer;
+        background-color: rgba(118, 187, 83, 0.7);
+    }
+
+    a.unsave:hover{
+        background-color: rgba(118, 187, 83, 0.4);
+    }
+
+    a.unsave:active{
+        background-color: rgba(118, 187, 83, 0.95);
     }
 
     a.remove:hover{

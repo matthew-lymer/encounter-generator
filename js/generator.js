@@ -1,17 +1,4 @@
 $(document).ready(function(){
-    //initialize Cookies
-    if(typeof(Cookies.get('monsters')) != "undefined"){
-        var monsterCookie = Cookies.get('monsters').split("_*|*_");
-
-        monsterCookie.forEach(function(value) {
-            if(value !== "undefined"){
-                $("#addMonster").trigger("click");
-                $("#generator .box").last().find(".monsterName").val(value);
-                $("#generator .box").last().find(".reRollMonster").trigger("click");
-            }
-        });
-    }
-
     var RNDEncounter,
         RNDWeather,
         RNDTerrain,
@@ -72,6 +59,8 @@ $(document).ready(function(){
 
     $("#generator").on("click", ".save", function(e){
         e.preventDefault();
+        var time = new Date();
+        time = time.getTime();
 
         var type = $(this).data("type");
 
@@ -79,15 +68,42 @@ $(document).ready(function(){
             //console.log($(this).parent().next(".monster_a").html().length);
             if($(this).parent().next(".monster_a").html().length > 0){
                 var monsterCookie = Cookies.get('monsters') + "";
-                monsterCookie += "_*|*_" + $(this).parent().find(".monsterName").val();
+                monsterCookie += "|||||" + time + "_____" + $(this).parent().find(".monsterName").val();
                 Cookies.set('monsters', monsterCookie, { expires: 365 });
-                alert("Module saved.")
+                $(this).removeClass("save").addClass("unsave");
+                $(this).find("img").attr("src","/images/on.png");
             }
             else{
-                alert("No monster to save.")
+                alert("No monster to pin.");
             }
         }
 
+        return false;
+    });
+
+    $("#generator").on("click", ".unsave", function(e){
+        e.preventDefault();
+
+        var box = $(this).parent().parent().parent();
+        var saveID = box.data("saveID");
+        var monsterCookie = Cookies.get('monsters').split("|||||");
+        var monsterCookieNew = [];
+
+        monsterCookie.forEach(function(value) {
+            if(value !== "undefined"){
+                var monsterCookieItem = value.split("_____");
+                if(monsterCookieItem[0] !== saveID){
+                    monsterCookieNew.push(value);
+                }
+            }
+        });
+
+        monsterCookieNew = monsterCookieNew.join("|||||");
+        $(this).removeClass("unsave").addClass("save");
+
+        Cookies.set('monsters', monsterCookieNew, { expires: 365 });
+
+        $(this).find("img").attr("src","/images/off.png");
         return false;
     });
 
@@ -376,8 +392,8 @@ $(document).ready(function(){
                         '           height="20" /></a>' +
                         '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
                         '           height="26" /></a>' +
-                        '           <a class="save" data-type="monster" href="#"><img src="images/save.png" width="26"' +
-                        '           height="26" /></a>' +
+                        '           <a class="save" data-type="monster" href="#"><img src="images/off.png" width="34"' +
+                        '           height="34" /></a>' +
                         '       </div>' +
                         '        <div class="monster_a border-box"></div>' +
                         '        <div class="monster_b left one-third border-box"></div>' +
@@ -701,4 +717,20 @@ $(document).ready(function(){
         }
         return false;
     });
+
+    //initialize Cookies
+    if(typeof(Cookies.get('monsters')) != "undefined"){
+        var monsterCookie = Cookies.get('monsters').split("|||||");
+        //$("#headerDummy").after("<h3>"+Cookies.get('monsters')+"</h3>");
+        monsterCookie.forEach(function(value) {
+            if(value !== "undefined" && value.length > 2){
+                var monsterCookieItem = value.split("_____");
+                $("#addMonster").trigger("click");
+                $("#generator .box").last().data("saveID",monsterCookieItem[0]);
+                $("#generator .box").last().find(".monsterName").val(monsterCookieItem[1]);
+                $("#generator .box").last().find(".reRollMonster").trigger("click");
+                $("#generator .box").last().find(".save").addClass("unsave").removeClass("save");
+            }
+        });
+    }
 });
