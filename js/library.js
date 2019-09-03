@@ -10,6 +10,11 @@ function randomInt(min, max){
 
 function charismaScore(x){
     var score = Math.floor(x / 2) - 5;
+
+    if(score >= 0){
+        score = "+" + score;
+    }
+
     return score;
 }
 
