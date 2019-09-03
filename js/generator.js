@@ -459,13 +459,13 @@ $(document).ready(function(){
             monsters.forEach(function(value){
                 if(queryCR == "Any CR"){
                     if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1){
-                        monsterList += "<div class='monsterSelection'>" + value["name"] + "</div>";
+                        monsterList += "<div class='monsterSelection'><span>" + value["name"] + "</span> (CR " + value["challenge_rating"] + ")</div>";
                         count++;
                     }
                 }
                 else{
                     if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && "CR " + value["challenge_rating"] == queryCR){
-                        monsterList += "<div class='monsterSelection'>" + value["name"] + "</div>";
+                        monsterList += "<div class='monsterSelection'><span>" + value["name"] + "</span> (CR " + value["challenge_rating"] + ")</div>";
                         count++;
                     }
                 }
@@ -488,7 +488,7 @@ $(document).ready(function(){
     });
 
     $("#generator").on("click", ".monsterSelection", function(e){
-        var selection = $(this).text();
+        var selection = $(this).find("span").text();
         var input = $(this).parent().parent().find("input").val(selection);
         $(this).parent().parent().parent().find(".reRollMonster").trigger("click");
         $(this).parent().hide();
