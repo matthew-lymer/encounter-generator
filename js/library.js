@@ -1378,7 +1378,7 @@ function NPCGenerator(){
 
     NPCHtml2 += ("<b>Charisma</b> | ")
     var randnum = Math.floor(Math.random() * (20 - 1)) + 1; //From 1 - 20
-    NPCHtml2 += randnum + "(" + charismaScore(randnum) + ")";
+    NPCHtml2 += randnum + " (" + charismaScore(randnum) + ")";
 
 
     NPCHtml2 += ("<br /><b>Eyes</b> |")
