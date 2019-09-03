@@ -9,7 +9,7 @@ function randomInt(min, max){
 }
 
 function charismaScore(x){
-    var srcore = Math.floor(x / 2) - 5;
+    var score = Math.floor(x / 2) - 5;
     return score;
 }
 
