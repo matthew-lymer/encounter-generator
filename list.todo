@@ -1,6 +1,6 @@
 To Do List:
 ☐ 1. Make the tool responsive
-☐ 2. Adjust NPC generator (attractiveness for charisma)
+✔ 2. Adjust NPC generator (attractiveness for charisma) @done(2019-09-03 17:27)
 ☐ 3. Add side-quest generator/filtrator
 ☐ 4. Traps are incorrectly called "scenarios"
 ☐ 5. Traps need saves

@@ -8,6 +8,11 @@ function randomInt(min, max){
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function charismaScore(x){
+    var srcore = Math.floor(x / 2) - 5;
+    return score;
+}
+
 /*
     ARRAYS
 */
@@ -1371,13 +1376,12 @@ function NPCGenerator(){
     randnum = Math.floor(randnum);
     NPCHtml1 += (mood[randnum]);
 
-    NPCHtml2 += ("<b>Attractiveness</b> | ")
-    var randnum = Math.random() * 10 + 0.99;
-    randnum = Math.floor(randnum);
-    NPCHtml2 += randnum;
+    NPCHtml2 += ("<b>Charisma</b> | ")
+    var randnum = Math.floor(Math.random() * (20 - 1)) + 1; //From 1 - 20
+    NPCHtml2 += randnum + "(" + charismaScore(randnum) + ")";
 
 
-    NPCHtml2 += (" / 10<br /><b>Eyes</b> |")
+    NPCHtml2 += ("<br /><b>Eyes</b> |")
     var oddeyes = new Array;
     oddeyes[0] = '\ blue';
     oddeyes[1] = '\ blue';
