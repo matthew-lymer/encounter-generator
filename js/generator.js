@@ -555,14 +555,14 @@ $(document).ready(function(){
                         '    <div class="inner text-center">' +
                         '        <div class="three-tenths left">Name</div>' +
                         '        <div class="one-fifth left">Initiative</div>' +
-                        '        <div class="one-fifth left">Current HP</div>' +
+                        '        <div class="one-fifth left">HP</div>' +
                         '        <div class="three-tenths left">Condition</div>' +
                         '        <div class="clear"></div>' +
                         '        <div class="inner combatants">' +
                         '            <div class="three-tenths left combat-name"><input type="text" placeholder="E.g. John" /></div>' +
                         '            <div class="one-fifth left combat-init"><input type="number" min="0" placeholder="E.g. 12" /></div>' +
                         '            <div class="one-fifth left combat-hp"><input type="number" placeholder="E.g. 30" /></div>' +
-                        '            <div class="three-tenths left combat-cond"><input type="number" placeholder="E.g. Poison" /></div>' +
+                        '            <div class="three-tenths left combat-cond"><input type="text" placeholder="E.g. Poison" /></div>' +
                         '            <div class="clear"></div>' +
                         '        </div>' +
                         '        <div class="text-center clear">' +

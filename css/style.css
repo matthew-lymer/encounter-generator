@@ -91,7 +91,7 @@
         height: 100%;
         display: block;
         box-sizing: border-box;
-        padding: 10px 15px;
+        padding: 10px 8px;
         border: none;
         resize:none;
     }
