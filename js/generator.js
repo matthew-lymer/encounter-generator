@@ -109,6 +109,7 @@ $(document).ready(function(){
 
     //Generate Scenario
     $("#addScenario").on("click", function(e){
+        e.preventDefault();
         boxes++;
         emptyGenerator(boxes);
         RNDEncounter = randomInt(0,encounters.length);
@@ -127,6 +128,7 @@ $(document).ready(function(){
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
+        return false;
     });
 
     $("#generator").on("click", ".reRollScenario", function(e){
@@ -138,6 +140,7 @@ $(document).ready(function(){
 
     //Generate Enviro-effect, Weather, Terrain
     $("#addEnvironment").on("click", function(e){
+        e.preventDefault();
         boxes++;
         emptyGenerator(boxes);
         RNDBiome = randomInt(0,biome.length);
@@ -162,6 +165,7 @@ $(document).ready(function(){
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
+        return false;
     });
 
     $("#generator").on("click", ".reRollEnvironment", function(e){
@@ -179,6 +183,7 @@ $(document).ready(function(){
 
     //Generate Items
     $("#addItem").on("click", function(e){
+        e.preventDefault();
         boxes++;
         emptyGenerator(boxes);
         RNDItem = randomInt(0,items.length);
@@ -199,6 +204,7 @@ $(document).ready(function(){
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
+        return false;
     });
 
     $("#generator").on("click", ".reRollItem", function(e){
@@ -368,6 +374,7 @@ $(document).ready(function(){
     }
 
     $("#addMonster").on("click", function(e){
+        e.preventDefault();
         boxes++;
         emptyGenerator(boxes);
         var selection = '<div class="monsterSuggestion"><input type="text" class="monsterName" placeholder="Monster name..." /><div class="results"></div></div>';
@@ -404,6 +411,7 @@ $(document).ready(function(){
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
+        return false;
     });
 
     $("#generator").on("click", ".reRollMonster", function(e){
@@ -503,6 +511,7 @@ $(document).ready(function(){
 
     //Generate NPC
     $("#addNPC").on("click", function(e){
+        e.preventDefault();
         boxes++;
         emptyGenerator(boxes);
         RNDNPC = NPCGenerator();
@@ -524,6 +533,7 @@ $(document).ready(function(){
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
+        return false;
     });
 
     $("#generator").on("click", ".reRollNPC", function(e){
@@ -537,6 +547,7 @@ $(document).ready(function(){
 
     //Add Combat Recorder
     $("#addCombat").on("click", function(e){
+        e.preventDefault();
         boxes++;
         emptyGenerator(boxes);
         var tempHTML =  '<div class="box">' +
@@ -564,6 +575,7 @@ $(document).ready(function(){
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
+        return false;
     });
 
     $("#generator").on("click", ".resetCombat", function(e){
@@ -590,6 +602,7 @@ $(document).ready(function(){
 
     //Add Note
     $("#addNote").on("click", function(e){
+        e.preventDefault();
         boxes++;
         emptyGenerator(boxes);
         var tempHTML =  '<div class="box small">' +
@@ -605,10 +618,13 @@ $(document).ready(function(){
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
+
+        return false;
     });
 
     //Add Challenge Calculator
     $("#addChallenge").on("click", function(e){
+        e.preventDefault();
         boxes++;
         emptyGenerator(boxes);
         var tempHTML =  '<div class="box medsmall">' +
@@ -636,6 +652,7 @@ $(document).ready(function(){
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
+        return false;
     });
 
     $("#generator").on("click", ".calculateChallenge", function(e){
@@ -663,50 +680,36 @@ $(document).ready(function(){
     });
 
 
-        //Generate Scenario
-        $("#addTrap").on("click", function(e){
-            boxes++;
-            emptyGenerator(boxes);
-            RNDTrap = randomInt(0,traps.length);
-            var tempHTML =  '<div class="box small">' +
-                            '    <h2 class="handle"><img src="images/trap.png" width="25" height="25" /> Trap</h2>' +
-                            '    <div class="inner">' +
-                            '        <div class="trap"><strong>Scenario</strong> | <span>'+traps[RNDTrap]+'</span></div>' +
-                            '        <div class="text-center">' +
-                            '           <a class="reRollScenario reroll" href="#"><h4>ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
-                            '           height="24" /></h4></a>' +
-                            '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
-                            '           height="20" /></a>' +
-                            '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
-                            '           height="26" /></a>' +
-                            '       </div>' +
-                            '    </div>' +
-                            '</div>';
-            generator.append(tempHTML);
-        });
-
-        $("#generator").on("click", ".reRollScenario", function(e){
-            e.preventDefault();
-            RNDTrap = randomInt(0,traps.length);
-            $(this).parent().parent().find(".trap span").text(traps[RNDTrap]);
-            return false;
-        });
-
-    /*
-    $("#generator").on("click", ".expand", function(e){
+    //Generate Trap
+    $("#addTrap").on("click", function(e){
         e.preventDefault();
-        var parentBox = $(this).parent().parent().parent(".box");
-        if(parentBox.hasClass("expandBox")){
-            parentBox.removeClass("expandBox");
-            $(this).find("h4").text("EXPAND");
-        }
-        else{
-            parentBox.addClass("expandBox");
-            $(this).find("h4").text("MINIMISE");
-        }
+        boxes++;
+        emptyGenerator(boxes);
+        RNDTrap = randomInt(0,traps.length);
+        var tempHTML =  '<div class="box small">' +
+                        '    <h2 class="handle"><img src="images/trap.png" width="25" height="25" /> Trap</h2>' +
+                        '    <div class="inner">' +
+                        '        <div class="trap"><strong>Trap</strong> | <span>'+traps[RNDTrap]+'</span></div>' +
+                        '        <div class="text-center">' +
+                        '           <a class="reRollScenario reroll" href="#"><h4>ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                        '           height="24" /></h4></a>' +
+                        '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
+                        '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
+                        '       </div>' +
+                        '    </div>' +
+                        '</div>';
+        generator.append(tempHTML);
         return false;
     });
-    */
+
+    $("#generator").on("click", ".reRollScenario", function(e){
+        e.preventDefault();
+        RNDTrap = randomInt(0,traps.length);
+        $(this).parent().parent().find(".trap span").text(traps[RNDTrap]);
+        return false;
+    });
 
     $("#reset").on("click", function(e){
         e.preventDefault();

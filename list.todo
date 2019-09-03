@@ -1,0 +1,8 @@
+To Do List:
+☐ 1. Make the tool responsive
+☐ 2. Adjust NPC generator (attractiveness for charisma)
+☐ 3. Add side-quest generator/filtrator
+☐ 4. Traps are incorrectly called "scenarios"
+☐ 5. Traps need saves
+☐ 6. Combat needs conditions and a turn indicator/progressor
+✔ 7. Adding windows incorrectly scrolls to the top @done(2019-09-03 17:11)
