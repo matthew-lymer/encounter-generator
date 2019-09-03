@@ -228,12 +228,36 @@
         padding: 0;
     }
 
+    .one-twentieth{
+        width: 5%;
+    }
+
+    .one-tenth{
+        width: 10%;
+    }
+
+    .three-twentieths{
+        width: 15%;
+    }
+
     .one-fifth{
         width: 20%;
     }
 
+    .one-quater{
+        width: 25%;
+    }
+
+    .three-tenths{
+        width: 30%;
+    }
+
     .one-third{
         width: 33.33%;
+    }
+
+    .two-fifths{
+        width: 40%;
     }
 
     .one-half{

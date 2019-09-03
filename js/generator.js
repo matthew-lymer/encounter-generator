@@ -553,14 +553,16 @@ $(document).ready(function(){
         var tempHTML =  '<div class="box">' +
                         '    <h2 class="handle"><img src="images/duel.png" width="25" height="25" /> COMBAT </h2>' +
                         '    <div class="inner text-center">' +
-                        '        <div class="one-third left">Name</div>' +
-                        '        <div class="one-third left">Initiative</div>' +
-                        '        <div class="one-third left">Current HP</div>' +
+                        '        <div class="three-tenths left">Name</div>' +
+                        '        <div class="one-fifth left">Initiative</div>' +
+                        '        <div class="one-fifth left">Current HP</div>' +
+                        '        <div class="three-tenths left">Condition</div>' +
                         '        <div class="clear"></div>' +
                         '        <div class="inner combatants">' +
-                        '            <div class="one-third left combat-name"><input type="text" placeholder="E.g. John" /></div>' +
-                        '            <div class="one-third left combat-init"><input type="number" min="0" placeholder="E.g. 12" /></div>' +
-                        '            <div class="one-third left combat-hp"><input class="half left" type="number" placeholder="E.g. 30" /></div>' +
+                        '            <div class="three-tenths left combat-name"><input type="text" placeholder="E.g. John" /></div>' +
+                        '            <div class="one-fifth left combat-init"><input type="number" min="0" placeholder="E.g. 12" /></div>' +
+                        '            <div class="one-fifth left combat-hp"><input type="number" placeholder="E.g. 30" /></div>' +
+                        '            <div class="three-tenths left combat-cond"><input type="number" placeholder="E.g. Poison" /></div>' +
                         '            <div class="clear"></div>' +
                         '        </div>' +
                         '        <div class="text-center clear">' +
