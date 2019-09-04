@@ -87,7 +87,7 @@ $(document).ready(function(){
                 monsterCookie += "|||||" + time + "_____" + $(this).parent().find(".monsterName").val();
                 Cookies.set('monsters', monsterCookie, { expires: 365 });
                 $(this).removeClass("save").addClass("unsave");
-                $(this).find("img").attr("src","/images/on.png");
+                $(this).find("img").attr("src","images/on.png");
             }
             else{
                 alert("No monster to pin.");
@@ -119,7 +119,7 @@ $(document).ready(function(){
 
         Cookies.set('monsters', monsterCookieNew, { expires: 365 });
 
-        $(this).find("img").attr("src","/images/off.png");
+        $(this).find("img").attr("src","images/off.png");
         return false;
     });
 
