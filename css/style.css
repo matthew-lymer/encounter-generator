@@ -180,8 +180,9 @@
         margin: 10px 0 0 0;
         background: #fff;
         outline:none;
-        border: 1px solid #111;
+        border: none;
         border-radius: 3px;
+        box-shadow: 0 0 0 1px #111;
     }
 
     .thumb{
@@ -795,19 +796,6 @@
             padding: 10px;
             margin: 47px 0 0 0;
         }
-
-        .item_c iframe,
-        .monster_b iframe{
-            width: 200%;
-            height: 500px;
-            margin-bottom: -250px;
-            -moz-transform: scale(0.5);
-            -moz-transform-origin: 0 0;
-            -o-transform: scale(0.5);
-            -o-transform-origin: 0 0;
-            -webkit-transform: scale(0.5);
-            -webkit-transform-origin: 0 0;
-        }
     }
 
     @media screen and (max-width:680px){
@@ -881,8 +869,7 @@
         }
 
         .item_c iframe, .monster_b iframe {
-            height: 300px;
-            margin-bottom: -160px;
+
         }
     }
 
