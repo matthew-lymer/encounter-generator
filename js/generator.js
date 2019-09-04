@@ -43,6 +43,22 @@ $(document).ready(function(){
         return false;
     });
 
+    //hamburger
+    $("#hamburger").on("click", function(e){
+        e.preventDefault();
+
+        if($("#hamburger").hasClass("on")){
+            $("#hamburger").removeClass("on");
+            $("#filter").fadeOut(200);
+        }
+        else{
+            $("#hamburger").addClass("on");
+            $("#filter").fadeIn(200);
+        }
+
+        return false;
+    });
+
     //De-generate boxes
     $("#generator").on("click", ".remove", function(e){
         e.preventDefault();
