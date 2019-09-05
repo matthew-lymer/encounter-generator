@@ -9,8 +9,8 @@ To Do List:
 ☐ 6b. Combat needs turn indicator/progressor
 ✔ 7. Adding windows incorrectly scrolls to the top @done(2019-09-03 17:11)
 ☐ 8a. Add "Tool saving" for other tools
-☐   8b. Traps
-☐   8c. Scenarios
+✔   8b. Traps @done(2019-09-05 13:00)
+✔   8c. Scenarios @done(2019-09-05 13:00)
 ☐   8d. Enviros
 ☐   8e. Combat
 ☐   8f. Challenge
@@ -18,3 +18,4 @@ To Do List:
 ☐   8h. Items
 ☐   8i. NPCs
 ✔   8j. Monsters @done(2019-09-05 11:46)
+✔ 9. Fix saving/unsaving intermittent issue @done(2019-09-05 13:00)

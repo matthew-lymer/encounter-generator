@@ -78,10 +78,11 @@ $(document).ready(function(){
         var time = new Date();
         time = time.getTime();
 
+        $(this).parent().parent().parent(".box").data("saveID",time);
+
         var type = $(this).data("type");
 
         if(type == "monster"){
-            //console.log($(this).parent().next(".monster_a").html().length);
             if($(this).parent().next(".monster_a").html().length > 0){
                 var monsterCookie = Cookies.get('monsters') + "";
                 monsterCookie += "|||||" + time + "_____" + $(this).parent().find(".monsterName").val();
@@ -94,6 +95,22 @@ $(document).ready(function(){
             }
         }
 
+        if(type == "scenario"){
+            var scenarioCookie = Cookies.get('scenarios') + "";
+            scenarioCookie += "|||||" + time + "_____" + $(this).parent().parent().find(".encounters span").text();
+            Cookies.set('scenarios', scenarioCookie, { expires: 365 });
+            $(this).removeClass("save").addClass("unsave");
+            $(this).find("img").attr("src","images/on.png");
+        }
+
+        if(type == "trap"){
+            var trapCookie = Cookies.get('traps') + "";
+            trapCookie += "|||||" + time + "_____" + $(this).parent().parent().find(".trap span").text();
+            Cookies.set('traps', trapCookie, { expires: 365 });
+            $(this).removeClass("save").addClass("unsave");
+            $(this).find("img").attr("src","images/on.png");
+        }
+
         return false;
     });
 
@@ -102,22 +119,64 @@ $(document).ready(function(){
 
         var box = $(this).parent().parent().parent();
         var saveID = box.data("saveID");
-        var monsterCookie = Cookies.get('monsters').split("|||||");
-        var monsterCookieNew = [];
+        var type = $(this).data("type");
 
-        monsterCookie.forEach(function(value) {
-            if(value !== "undefined"){
-                var monsterCookieItem = value.split("_____");
-                if(monsterCookieItem[0] !== saveID){
-                    monsterCookieNew.push(value);
+        if(type == "monster"){
+            var monsterCookie = Cookies.get('monsters').split("|||||");
+            var monsterCookieNew = [];
+
+            monsterCookie.forEach(function(value) {
+                if(value !== "undefined" && value.length > 0){
+                    var monsterCookieItem = value.split("_____");
+                    if(parseInt(monsterCookieItem[0]) !== parseInt(saveID)){
+                        monsterCookieNew.push(value);
+                    }
                 }
-            }
-        });
+            });
 
-        monsterCookieNew = monsterCookieNew.join("|||||");
-        $(this).removeClass("unsave").addClass("save");
+            monsterCookieNew = monsterCookieNew.join("|||||");
+            $(this).removeClass("unsave").addClass("save");
 
-        Cookies.set('monsters', monsterCookieNew, { expires: 365 });
+            Cookies.set('monsters', monsterCookieNew, { expires: 365 });
+        }
+
+        if(type == "scenario"){
+            var scenarioCookie = Cookies.get('scenarios').split("|||||");
+            var scenarioCookieNew = [];
+
+            scenarioCookie.forEach(function(value) {
+                if(value !== "undefined" && value.length > 0){
+                    var scenarioCookieItem = value.split("_____");
+                    if(parseInt(scenarioCookieItem[0]) !== parseInt(saveID)){
+                        scenarioCookieNew.push(value);
+                    }
+                }
+            });
+
+            scenarioCookieNew = scenarioCookieNew.join("|||||");
+            $(this).removeClass("unsave").addClass("save");
+
+            Cookies.set('scenarios', scenarioCookieNew, { expires: 365 });
+        }
+
+        if(type == "trap"){
+            var trapCookie = Cookies.get('traps').split("|||||");
+            var trapCookieNew = [];
+
+            trapCookie.forEach(function(value) {
+                if(value !== "undefined" && value.length > 0){
+                    var trapCookieItem = value.split("_____");
+                    if(parseInt(trapCookieItem[0]) !== parseInt(saveID)){
+                        trapCookieNew.push(value);
+                    }
+                }
+            });
+
+            trapCookieNew = trapCookieNew.join("|||||");
+            $(this).removeClass("unsave").addClass("save");
+
+            Cookies.set('traps', trapCookieNew, { expires: 365 });
+        }
 
         $(this).find("img").attr("src","images/off.png");
         return false;
@@ -140,6 +199,8 @@ $(document).ready(function(){
                         '           height="20" /></a>' +
                         '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
                         '           height="26" /></a>' +
+                        '           <a class="save" data-type="scenario" href="#"><img src="images/off.png" width="34"' +
+                        '           height="34" /></a>' +
                         '       </div>' +
                         '    </div>' +
                         '</div>';
@@ -704,7 +765,7 @@ $(document).ready(function(){
         boxes++;
         emptyGenerator(boxes);
         RNDTrap = randomInt(0,traps.length);
-        var tempHTML =  '<div class="box small">' +
+        var tempHTML =  '<div class="box medsmall">' +
                         '    <h2 class="handle"><img src="images/trap.png" width="25" height="25" /> Trap</h2>' +
                         '    <div class="inner">' +
                         '        <div class="trap"><strong>Trap</strong> | <span>'+traps[RNDTrap]+'</span></div>' +
@@ -715,6 +776,8 @@ $(document).ready(function(){
                         '           height="20" /></a>' +
                         '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
                         '           height="26" /></a>' +
+                        '           <a class="save" data-type="trap" href="#"><img src="images/off.png" width="34"' +
+                        '           height="34" /></a>' +
                         '       </div>' +
                         '    </div>' +
                         '</div>';
@@ -742,7 +805,6 @@ $(document).ready(function(){
     //initialize Cookies
     if(typeof(Cookies.get('monsters')) != "undefined"){
         var monsterCookie = Cookies.get('monsters').split("|||||");
-        //$("#headerDummy").after("<h3>"+Cookies.get('monsters')+"</h3>");
         monsterCookie.forEach(function(value) {
             if(value !== "undefined" && value.length > 2){
                 var monsterCookieItem = value.split("_____");
@@ -751,6 +813,35 @@ $(document).ready(function(){
                 $("#generator .box").last().find(".monsterName").val(monsterCookieItem[1]);
                 $("#generator .box").last().find(".reRollMonster").trigger("click");
                 $("#generator .box").last().find(".save").addClass("unsave").removeClass("save");
+                $("#generator .box").last().find(".unsave img").attr("src","images/on.png");
+            }
+        });
+    }
+
+    if(typeof(Cookies.get('scenarios')) != "undefined"){
+        var scenarioCookie = Cookies.get('scenarios').split("|||||");
+        scenarioCookie.forEach(function(value) {
+            if(value !== "undefined" && value.length > 2){
+                var scenarioCookieItem = value.split("_____");
+                $("#addScenario").trigger("click");
+                $("#generator .box").last().data("saveID",scenarioCookieItem[0]);
+                $("#generator .box").last().find(".encounters span").text(scenarioCookieItem[1]);
+                $("#generator .box").last().find(".save").addClass("unsave").removeClass("save");
+                $("#generator .box").last().find(".unsave img").attr("src","images/on.png");
+            }
+        });
+    }
+
+    if(typeof(Cookies.get('traps')) != "undefined"){
+        var trapCookie = Cookies.get('traps').split("|||||");
+        trapCookie.forEach(function(value) {
+            if(value !== "undefined" && value.length > 2){
+                var trapCookieItem = value.split("_____");
+                $("#addTrap").trigger("click");
+                $("#generator .box").last().data("saveID",trapCookieItem[0]);
+                $("#generator .box").last().find(".trap span").text(trapCookieItem[1]);
+                $("#generator .box").last().find(".save").addClass("unsave").removeClass("save");
+                $("#generator .box").last().find(".unsave img").attr("src","images/on.png");
             }
         });
     }

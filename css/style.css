@@ -610,11 +610,12 @@
 
     h2.handle{
         border-bottom: 1px solid #888;
-        padding: 8px 90px 8px 4px;
+        padding: 8px 90px 8px 15px;
         height: 41px;
         background: #fff;
         box-sizing: border-box;
         line-height: 25px;
+        text-align: left;
     }
 
     a.drag{
