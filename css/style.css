@@ -828,19 +828,20 @@
         }
 
         .monster_d{
-            overflow: auto;
+            /* overflow: auto;
             -webkit-overflow-scrolling:touch;
             height: 200px;
             max-height: 200px;
             border-radius: 3px;
             box-shadow: 0 0 0 1px #111;
             background: #fff;
-            padding: 0!important;
+            padding: 0!important; */
+            display: none;
         }
 
-        .monster_d iframe{
+        /* .monster_d iframe{
             margin: -50px 0 0 -63px;
-        }
+        } */
     }
 
     @media screen and (max-width:680px){
