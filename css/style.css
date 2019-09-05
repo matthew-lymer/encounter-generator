@@ -802,6 +802,18 @@
             height: 200px!important;
             max-width: 100%!important;
             max-height: 200px!important;
+            display: block;
+            margin: 0;
+        }
+
+        .item_c{
+            margin: 10px 0 0 0;
+            overflow: auto;
+            -webkit-overflow-scrolling:touch;
+            width: 100%!important;
+            height: 200px!important;
+            max-width: 100%!important;
+            max-height: 200px!important;
         }
     }
 
