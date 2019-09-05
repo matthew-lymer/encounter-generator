@@ -1,5 +1,6 @@
 To Do List:
-✔ 1. Make the tool responsive @done(2019-09-04 17:18)
+✔ 1a. Make the tool responsive @done(2019-09-04 17:18)
+☐ 1b. Fix responsive iframes
 ✔ 2. Adjust NPC generator (attractiveness for charisma) @done(2019-09-03 17:27)
 ☐ 3. Add side-quest generator/filtrator
 ✔ 4. Traps are incorrectly called "scenarios" @done(2019-09-03 17:35)
