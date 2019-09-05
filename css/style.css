@@ -798,14 +798,20 @@
         }
 
         iframe {
-            width: 100%!important;
-            height: 200px!important;
-            max-width: 100%!important;
-            max-height: 200px!important;
+            width: 150%!important;
+            height: 300px!important;
+            max-width: 150%!important;
+            max-height: 300px!important;
             display: block;
             margin: 0;
             border-radius: 0px;
             box-shadow: none;
+            transform: scale(0.666);
+            -webkit-transform: scale(0.666);
+            -moz-transform: scale(0.666);
+            -ms-transform: scale(0.666);
+            -o-transform: scale(0.666);
+            margin: -50px 0 0 -85px;
         }
 
         .item_c{
