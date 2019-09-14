@@ -32,6 +32,17 @@ $(document).ready(function(){
         });
     }
 
+    function compare(a,b){
+        if( a.init < b.init ){
+            return 1;
+        }
+        if( a.init > b.init ){
+            return -1;
+        }
+
+        return 0;
+    }
+
     $("#fullscreen").on("click", function(e){
         e.preventDefault();
         var el = document.documentElement,
@@ -62,13 +73,27 @@ $(document).ready(function(){
     //De-generate boxes
     $("#generator").on("click", ".remove", function(e){
         e.preventDefault();
-        var remove = confirm("Are you sure you want remove this module?");
 
-        if(remove){
-            $(this).parent().parent().parent(".box").remove();
-            boxes--;
-            fillGenerator(boxes);
-        }
+        $(this).next(".confirm").remove();
+        $(this).after('<div class="confirm">Are you sure?<br> <a href="#" class="yes">YES</a><a href="#" class="no">NO</a></div>')
+
+        return false;
+    });
+
+    $("#generator").on("click", ".no", function(e){
+        e.preventDefault();
+
+        $(this).parent(".confirm").remove();
+
+        return false;
+    });
+
+    $("#generator").on("click", ".yes", function(e){
+        e.preventDefault();
+
+        $(this).closest(".box").remove();
+        boxes--;
+        fillGenerator(boxes);
 
         return false;
     });
@@ -390,6 +415,7 @@ $(document).ready(function(){
         if(typeof monsterElement["special_abilities"] != "undefined") {
             monster_c += "<div>";
             monster_c += "<div><strong>Abilities</strong></div>";
+            monster_c += "<div class='column'>";
 
             monsterElement["special_abilities"].forEach(function(value){
                 monster_c += "<div class='ability'>";
@@ -403,12 +429,15 @@ $(document).ready(function(){
 
                 monster_c += "</div>";
             });
+
+            monster_c += "</div>";
             monster_c += "</div><hr>";
         }
 
         if(typeof monsterElement["actions"] != "undefined") {
-            monster_c += "<div class='left one-half actions'>";
+            monster_c += "<div class='actions'>";
             monster_c += "<div><strong>Actions</strong></div>";
+            monster_c += "<div class='column'>";
 
             monsterElement["actions"].forEach(function(value){
                 monster_c += "<div class='ability'>";
@@ -422,12 +451,15 @@ $(document).ready(function(){
 
                 monster_c += "</div>";
             });
+
             monster_c += "</div>";
+            monster_c += "</div><hr>";
         }
 
         if(typeof monsterElement["legendary_actions"] != "undefined") {
-            monster_c += "<div class='left one-half'>";
+            monster_c += "<div class=''>";
             monster_c += "<div><strong>Legendary Actions</strong></div>";
+            monster_c += "<div class='column'>";
 
             monsterElement["legendary_actions"].forEach(function(value){
                 monster_c += "<div class='ability'>";
@@ -442,6 +474,7 @@ $(document).ready(function(){
                 monster_c += "</div>";
             });
 
+            monster_c += "</div>";
             monster_c += "</div>";
         }
 
@@ -627,24 +660,27 @@ $(document).ready(function(){
         e.preventDefault();
         boxes++;
         emptyGenerator(boxes);
-        var tempHTML =  '<div class="box">' +
+        var tempHTML =  '<div class="box med">' +
                         '    <h2 class="handle"><img src="images/duel.png" width="25" height="25" /> COMBAT </h2>' +
                         '    <div class="inner text-center">' +
+                        '    <div class="three-quaters left">' +
                         '        <div class="three-tenths left">Name</div>' +
                         '        <div class="one-fifth left">Initiative</div>' +
                         '        <div class="one-fifth left">HP</div>' +
                         '        <div class="three-tenths left">Condition</div>' +
                         '        <div class="clear"></div>' +
                         '        <div class="inner combatants">' +
-                        '            <div class="three-tenths left combat-name"><input type="text" placeholder="E.g. John" /></div>' +
-                        '            <div class="one-fifth left combat-init"><input type="number" min="0" placeholder="E.g. 12" /></div>' +
-                        '            <div class="one-fifth left combat-hp"><input type="number" placeholder="E.g. 30" /></div>' +
-                        '            <div class="three-tenths left combat-cond"><input type="text" placeholder="E.g. Poison" /></div>' +
-                        '            <div class="clear"></div>' +
+                        '            <div class="combatant">' +
+                        '                <div class="three-tenths left combat-name"><input type="text" placeholder="E.g. John" /></div>' +
+                        '                <div class="one-fifth left combat-init"><input type="number" min="0" placeholder="E.g. 12" /></div>' +
+                        '                <div class="one-fifth left combat-hp"><input type="number" placeholder="E.g. 30" /></div>' +
+                        '                <div class="three-tenths left combat-cond"><input type="text" placeholder="E.g. Poison" /></div>' +
+                        '                <div class="clear"></div>' +
+                        '            </div>' +
                         '        </div>' +
                         '        <div class="text-center clear">' +
-                        '           <a class="addCombatant reroll" href="#"><h4>+ ADD</h4></a>' +
-                        '           <a class="resetCombat reroll" href="#"><h4>RESET <img src="images/dice.png" width="24"' +
+                        '           <a class="addCombatant reroll" href="#"><h4>+ ADD PLAYER</h4></a>' +
+                        '           <a class="progressCombat reroll" href="#"><h4><b>START</b> <img src="images/duel.png" width="24"' +
                         '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
@@ -652,28 +688,80 @@ $(document).ready(function(){
                         '           height="26" /></a>' +
                         '       </div>' +
                         '    </div>' +
+                        '    <div class="one-quater left">' +
+                        '       Turn Count' +
+                        '       <div class="inner" style="border-left: none;">' +
+                        '            <div class="turns"><input type="text" readonly placeholder="E.g. 1" value="1" /></div>' +
+                        '       </div>' +
+                        '    </div>' +
+                        '    <div class="clear"></div>';
+                        '    </div>' +
                         '</div>';
         generator.append(tempHTML);
         return false;
     });
 
-    $("#generator").on("click", ".resetCombat", function(e){
+    $("#generator").on("click", ".progressCombat", function(e){
         e.preventDefault();
-        var tempHTML =  '<div class="one-third left combat-name"><input type="text" placeholder="E.g. John" /></div>' +
-                        '<div class="one-third left combat-init"><input type="number" min="0" placeholder="E.g. 12" /></div>' +
-                        '<div class="one-third left combat-hp"><input class="half left" type="number" placeholder="E.g. 30" /></div>' +
-                        '<div class="clear"></div>';
+        var combatInstance = $(this).parent().parent().find(".combatants");
+        var turnCounter = $(this).parent().parent().parent().find(".turns input");
 
-        $(this).parent().parent().find(".combatants").html(tempHTML);
+        if($(this).hasClass("started")){
+            var next = combatInstance.find(".combatant.focus").next(".combatant");
+            combatInstance.find(".combatant.focus").removeClass("focus");
+
+            if(next.length){
+                //Next player on this turn
+                next.addClass("focus");
+            }
+            else{
+                //Startt of next Turn
+                combatInstance.find(".combatant").eq(0).addClass("focus");
+                turnCounter.val( parseInt(turnCounter.val()) + 1 );
+            }
+        }
+        else{
+            //Start
+            $(this).addClass("started").find("h4 b").text("NEXT");
+            var playerList = combatInstance.find(".combatant");
+            var players = new Array();
+            var x = 0;
+            playerList.each(function(){
+                players[x] = {
+                                "name":$(this).find(".combat-name input").val(),
+                                "init":parseInt($(this).find(".combat-init input").val()),
+                                "hp":parseInt($(this).find(".combat-hp input").val()),
+                                "condition":$(this).find(".combat-cond input").val()
+                            };
+                x++;
+            });
+
+            players.sort(compare);
+
+            var x = 0;
+            playerList.each(function(){
+                $(this).find(".combat-name input").val( players[x].name );
+                $(this).find(".combat-init input").val( players[x].init );
+                $(this).find(".combat-hp input").val( players[x].hp );
+                $(this).find(".combat-cond input").val( players[x].condition );
+                x++;
+            });
+
+            playerList.eq(0).addClass("focus");
+        }
+
         return false;
     });
 
     $("#generator").on("click", ".addCombatant", function(e){
         e.preventDefault();
-        var tempHTML =  '<div class="one-third left combat-name"><input type="text" placeholder="E.g. John" /></div>' +
-                        '<div class="one-third left combat-init"><input type="number" min="0" placeholder="E.g. 12" /></div>' +
-                        '<div class="one-third left combat-hp"><input class="half left" type="number" placeholder="E.g. 30" /></div>' +
-                        '<div class="clear"></div>';
+        var tempHTML =  '<div class="combatant">' +
+                        '    <div class="three-tenths left combat-name"><input type="text" placeholder="E.g. John" /></div>' +
+                        '    <div class="one-fifth left combat-init"><input type="number" min="0" placeholder="E.g. 12" /></div>' +
+                        '    <div class="one-fifth left combat-hp"><input type="number" placeholder="E.g. 30" /></div>' +
+                        '    <div class="three-tenths left combat-cond"><input type="text" placeholder="E.g. Poison" /></div>' +
+                        '    <div class="clear"></div>' +
+                        '</div>';
 
         $(this).parent().parent().find(".combatants").append(tempHTML);
         return false;
@@ -792,15 +880,15 @@ $(document).ready(function(){
         return false;
     });
 
-    $("#reset").on("click", function(e){
-        e.preventDefault();
-        var reset = confirm("Are you sure you want clear the board?");
-
-        if(reset){
-            location.reload();
-        }
-        return false;
-    });
+    // $("#reset").on("click", function(e){
+    //     e.preventDefault();
+    //     var reset = confirm("Are you sure you want clear the board?");
+    //
+    //     if(reset){
+    //         location.reload();
+    //     }
+    //     return false;
+    // });
 
     //initialize Cookies
     if(typeof(Cookies.get('monsters')) != "undefined"){

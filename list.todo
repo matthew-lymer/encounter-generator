@@ -19,3 +19,4 @@ To Do List:
 ☐   8i. NPCs
 ✔   8j. Monsters @done(2019-09-05 11:46)
 ✔ 9. Fix saving/unsaving intermittent issue @done(2019-09-05 13:00)
+☐ 10. Replace JS "Confirm" popup with HTML

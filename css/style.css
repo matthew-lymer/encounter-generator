@@ -270,6 +270,10 @@
         width: 66.66%;
     }
 
+    .three-quaters{
+        width: 75%;
+    }
+
     .border-box{
         box-sizing: border-box;
     }
@@ -406,14 +410,19 @@
         box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
         outline:1px solid #000;
         box-shadow: -10px 10px 0px 0px rgba(0,0,0,0.6);
+        overflow: hidden;
     }
 
     .box.large + .box-placeholder{
-        width: 800px;
+        width: 740px;
     }
 
     .box.medlarge + .box-placeholder{
         width: 600px;
+    }
+
+    .box.med + .box-placeholder{
+        width: 480px;
     }
 
     .box.small + .box-placeholder{
@@ -442,12 +451,16 @@
 
     .box.large{
         width: 66.66%;
-        width: 800px;
+        width: 740px;
     }
 
     .box.medlarge{
         width: 66.66%;
         width: 600px;
+    }
+
+    .box.med{
+        width: 480px;
     }
 
     .box.small{
@@ -467,11 +480,11 @@
         box-sizing: border-box;
     }
 
-    .box > .inner > .inner{
+    .box > .inner > .inner,
+    .box > .inner > div > .inner{
         padding: 15px 0;
         margin: 15px 0 0 0;
-        border: 1px solid #111;
-        border-radius: 3px;
+        border: 1px solid #000;
         position: relative;
         background: #fff;
         box-sizing: border-box;
@@ -507,13 +520,26 @@
         -webkit-transform-origin: 0 0;
     }
 
-    .ability{
-        padding: 10px;
-        background: #ccc
+    .column{
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
+        column-gap: 10px;
+        padding: 10px 0;
     }
 
-    .ability + .ability{
-        margin-top:10px;
+    .ability{
+        padding: 10px;
+        box-sizing: border-box;
+        background: #ccc;
+        display: block;
+        margin-bottom: 10px;
+        -webkit-column-break-inside: avoid;
+                  page-break-inside: avoid;
+                       break-inside: avoid;
+    }
+
+    .ability div{
     }
 
     .actions{
@@ -546,6 +572,30 @@
         height: 550px;
     }
     */
+
+    .confirm{
+        position: absolute;
+        left: 50%;
+        margin-left: -75px;
+        top: 41px;
+        z-index: 2;
+        background: #eb918c;
+        padding: 9px;
+        box-shadow: -10px 10px 0px 0px rgba(0,0,0,0.6);
+        width: 150px;
+        box-sizing: border-box;
+        outline: 5000px solid rgba(0,0,0,0.5);
+        border: 1px solid #000;
+    }
+
+    .confirm a {
+        display: inline-block;
+        font-weight: 900;
+        margin: 8px 5px 5px 5px;
+        padding: 5px 10px;
+        background: #000;
+        color: #fff;
+    }
 
     a.linkButton,
     a.roll,
@@ -717,6 +767,16 @@
 
     .combatants .clear:last-child{
         border:none;
+    }
+
+    .combatant.focus{
+        background: url(../images/duel.png) 10px 50% no-repeat #b2e0e8;
+        background-size: 19px auto;
+        background: #b2e0e8;
+    }
+
+    .combatant input{
+        background: none;
     }
 
     .calculation{
