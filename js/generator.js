@@ -538,8 +538,12 @@ $(document).ready(function(){
             $(this).parent().parent().find(".monster_a").html("<hr>");
             $(this).parent().parent().find(".monster_b").html(formattedMonster[0]);
             $(this).parent().parent().find(".monster_c").html(formattedMonster[1]);
-            $(this).parent().parent().find(".monster_d").html("<iframe src='https://www.bing.com/images/search?q=D%26D " + RNDMonster["name"] + "#vm_c'></iframe>");
+            $(this).parent().parent().find(".monster_d").html("<iframe style='opacity:0;' src='https://www.bing.com/images/search?q=D%26D " + RNDMonster["name"] + "#vm_c'></iframe>");
             $(this).parent().parent().find(".monster_e").html(formattedMonster[2]);
+
+            setTimeout(function(){
+                $(this).parent().parent().find(".monster_d iframe").css("opacity",1);
+            },1000);
         }
 
         return false;
@@ -559,8 +563,12 @@ $(document).ready(function(){
             $(this).parent().parent().find(".monster_a").html("<hr>");
             $(this).parent().parent().find(".monster_b").html(formattedMonster[0]);
             $(this).parent().parent().find(".monster_c").html(formattedMonster[1]);
-            $(this).parent().parent().find(".monster_d").html("<iframe src='https://www.bing.com/images/search?q=D%26D " + RNDMonster["name"] + "#vm_c'></iframe>");
+            $(this).parent().parent().find(".monster_d").html("<iframe style='opacity:0;' src='https://www.bing.com/images/search?q=D%26D " + RNDMonster["name"] + "#vm_c'></iframe>");
             $(this).parent().parent().find(".monster_e").html(formattedMonster[2]);
+            
+            setTimeout(function(){
+                $(this).parent().parent().find(".monster_d iframe").css("opacity",1);
+            },1000);
         }
 
         return false;
