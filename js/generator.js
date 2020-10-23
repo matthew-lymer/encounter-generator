@@ -557,7 +557,6 @@ $(document).ready(function(){
             var searchContainer = $(this).parent().parent().find(".monster_d");
 
             keyword = RNDMonster["name"];
-
             google.load('search', '1');
             google.setOnLoadCallback( onLoadGoogle( searchContainer ) );
 
@@ -581,8 +580,14 @@ $(document).ready(function(){
             $(this).parent().parent().find(".monster_a").html("<hr>");
             $(this).parent().parent().find(".monster_b").html(formattedMonster[0]);
             $(this).parent().parent().find(".monster_c").html(formattedMonster[1]);
-            $(this).parent().parent().find(".monster_d").html("<iframe src='https://www.google.co.uk/search?igu=1&q=D%26D " + RNDMonster["name"] + "&tbm=isch#search'></iframe>");
             $(this).parent().parent().find(".monster_e").html(formattedMonster[2]);
+            var searchContainer = $(this).parent().parent().find(".monster_d");
+
+            keyword = RNDMonster["name"];
+            google.load('search', '1');
+            google.setOnLoadCallback( onLoadGoogle( searchContainer ) );
+
+            //$(this).parent().parent().find(".monster_d").html("<iframe src='https://www.google.co.uk/search?igu=1&q=D%26D " + RNDMonster["name"] + "&tbm=isch#search'></iframe>");
         }
 
         return false;
