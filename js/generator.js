@@ -541,8 +541,9 @@ $(document).ready(function(){
             $(this).parent().parent().find(".monster_d").html("<iframe style='opacity:0;' src='https://www.bing.com/images/search?q=D%26D " + RNDMonster["name"] + "#vm_c'></iframe>");
             $(this).parent().parent().find(".monster_e").html(formattedMonster[2]);
 
+            var iframe = $(this).parent().parent().find(".monster_d iframe");
             setTimeout(function(){
-                $(this).parent().parent().find(".monster_d iframe").css("opacity",1);
+                iframe.parent().parent().find(".monster_d iframe").css("opacity",1);
             },1000);
         }
 
@@ -565,9 +566,10 @@ $(document).ready(function(){
             $(this).parent().parent().find(".monster_c").html(formattedMonster[1]);
             $(this).parent().parent().find(".monster_d").html("<iframe style='opacity:0;' src='https://www.bing.com/images/search?q=D%26D " + RNDMonster["name"] + "#vm_c'></iframe>");
             $(this).parent().parent().find(".monster_e").html(formattedMonster[2]);
-            
+
+            var iframe = $(this).parent().parent().find(".monster_d iframe");
             setTimeout(function(){
-                $(this).parent().parent().find(".monster_d iframe").css("opacity",1);
+                iframe.parent().parent().find(".monster_d iframe").css("opacity",1);
             },1000);
         }
 
