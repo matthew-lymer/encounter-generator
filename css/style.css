@@ -413,6 +413,10 @@
         overflow: hidden;
     }
 
+    .box.overflow{
+        overflow: visible;
+    }
+
     .box.large + .box-placeholder{
         width: 740px;
     }

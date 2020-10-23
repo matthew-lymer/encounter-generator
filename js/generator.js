@@ -500,7 +500,7 @@ $(document).ready(function(){
         selection += '<a class="reRollMonster reroll" style="display:none" href="#"><h4>SEARCH&nbsp;&nbsp;<img src="images/dice.png" width="24" height="24" /></h4></a>';
         selection += '<a class="randomMonster reroll" style="" href="#"><h4>RANDOM&nbsp;&nbsp;<img src="images/dice.png" width="24" height="24" /></h4></a>';
 
-        var tempHTML =  '<div class="box large">' +
+        var tempHTML =  '<div class="box overflow large">' +
                         '    <h2 class="handle"><img src="images/monster.png" width="25" height="25" /> Monster</h2>' +
                         '    <div class="inner">' +
                         '        <div class="text-center top-controls">' +
