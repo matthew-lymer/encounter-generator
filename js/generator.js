@@ -216,29 +216,29 @@ $(document).ready(function(){
         var tempHTML =  '<div class="box xlarge">' +
                         '    <h2 class="handle"><img src="images/alert.png" width="25" height="25" /> Skill Guide</h2>' +
                         '    <div class="inner">' +
-                        '        <div class="encounters"><strong>STR</strong></span></div>' +
+                        '        <div class="encounters"><strong>STRENGTH</strong></span></div>' +
                         '        <div class="encounters"><strong>Athletics</strong> | Climbing, jumping, and swimming.</span></div>' +
                         '        <hr>' +
-                        '        <div class="encounters"><strong>DEX</strong></span></div>' +
+                        '        <div class="encounters"><strong>DEXTERITY</strong></span></div>' +
                         '        <div class="encounters"><strong>Acrobatics</strong> | Acrobatic stunts, jumps, dives, rolls, flips and balance.</span></div>' +
                         '        <div class="encounters"><strong>Sleight of Hand</strong> | Theft, trickery and concealing items.</span></div>' +
                         '        <div class="encounters"><strong>Stealth</strong> | Escaping unnoticed, hiding and sneaking.</span></div>' +
                         '        <hr>' +
-                        '        <div class="encounters"><strong>INT</strong></span></div>' +
+                        '        <div class="encounters"><strong>INTELLIGENCE</strong></span></div>' +
                         '        <div class="encounters"><strong>Arcana</strong> | Knowledge of magical items/beings/locations and spells.</span></div>' +
                         '        <div class="encounters"><strong>History</strong> | Knowledge of past events/people, legends, civilizations and wars.</span></div>' +
                         '        <div class="encounters"><strong>Investigation</strong> | Looking for/understanding clues and analyzing events/literature/wounds.</span></div>' +
                         '        <div class="encounters"><strong>Nature</strong> | Knowledge of terrain, plants, animals, the weather and natural cycles.</span></div>' +
                         '        <div class="encounters"><strong>Religion</strong> | Knowledge of deities, rites, prayers, holy symbol, cults and religious practices.</span></div>' +
                         '        <hr>' +
-                        '        <div class="encounters"><strong>WIS</strong></span></div>' +
+                        '        <div class="encounters"><strong>WISDOM</strong></span></div>' +
                         '        <div class="encounters"><strong>Animal Handling</strong> | Calming, understanding, guiding and controlling animals.</span></div>' +
                         '        <div class="encounters"><strong>Insight</strong> | Determining intentions, lies and predicting what a creature might do next.</span></div>' +
                         '        <div class="encounters"><strong>Medicine</strong> | Stabilize a dying creature, diagnose an illness and identify a wound/body.</span></div>' +
                         '        <div class="encounters"><strong>Perception</strong> | Check what you hear/see, detect the presence of something and general test your awareness of events/locations/objects.</span></div>' +
                         '        <div class="encounters"><strong>Survival</strong> | Following tracks, hunting animals, navigating paths/wild locations, predicting the weather and avoiding natural traps/pitfalls.</span></div>' +
                         '        <hr>' +
-                        '        <div class="encounters"><strong>CHA</strong></span></div>' +
+                        '        <div class="encounters"><strong>CHARISMA</strong></span></div>' +
                         '        <div class="encounters"><strong>Deception</strong> | Hiding the truth verbally/through actions and misleading others.</span></div>' +
                         '        <div class="encounters"><strong>Intimidation</strong> | Influencing someone/something through threats, hostility and physical presence.</span></div>' +
                         '        <div class="encounters"><strong>Performance</strong> | Playing music, dancing, acting, storytelling and entertaining.</span></div>' +
