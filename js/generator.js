@@ -207,6 +207,39 @@ $(document).ready(function(){
         return false;
     });
 
+    //Show Skill Guide
+    $("#addSkillGuide").on("click", function(e){
+        e.preventDefault();
+        boxes++;
+        emptyGenerator(boxes);
+        RNDEncounter = randomInt(0,encounters.length);
+        var tempHTML =  '<div class="box large">' +
+                        '    <h2 class="handle"><img src="images/alert.png" width="25" height="25" /> Skill Guide</h2>' +
+                        '    <div class="inner">' +
+                        '        <div class="encounters"><strong>STR | Athletics</strong> | Climbing, jumping, and swimming.</span></div>' +
+                        '        <div class="encounters"><strong>DEX | Acrobatics</strong> | Acrobatic stunts, jumps, dives, rolls, flips and balance.</span></div>' +
+                        '        <div class="encounters"><strong>DEX | Sleight of Hand</strong> | Theft, trickery and concealing items.</span></div>' +
+                        '        <div class="encounters"><strong>DEX | Stealth</strong> | Escaping unnoticed, hiding and sneaking.</span></div>' +
+                        '        <div class="encounters"><strong>INT | Arcana</strong> | Knowledge of magical items/beings/locations and spells.</span></div>' +
+                        '        <div class="encounters"><strong>INT | History</strong> | Knowledge of past events/people, legends, civilizations and wars.</span></div>' +
+                        '        <div class="encounters"><strong>INT | Investigation</strong> | Looking for/understanding clues and analyzing events/literature/wounds.</span></div>' +
+                        '        <div class="encounters"><strong>INT | Nature</strong> | Knowledge of terrain, plants, animals, the weather and natural cycles.</span></div>' +
+                        '        <div class="encounters"><strong>INT | Religion</strong> | Knowledge of deities, rites, prayers, holy symbol, cults and religious practices.</span></div>' +
+                        '        <div class="encounters"><strong>WIS | Animal Handling</strong> | Calming, understanding, guiding and controlling animals.</span></div>' +
+                        '        <div class="encounters"><strong>WIS | Insight</strong> | Determining intentions, lies and predicting what a creature might do next.</span></div>' +
+                        '        <div class="encounters"><strong>WIS | Medicine</strong> | Stabilize a dying creature, diagnose an illness and identify a wound/body.</span></div>' +
+                        '        <div class="encounters"><strong>WIS | Perception</strong> | Check what you hear/see, detect the presence of something and general test your awareness of events/locations/objects.</span></div>' +
+                        '        <div class="encounters"><strong>WIS | Survival</strong> | Following tracks, hunting animals, navigating paths/wild locations, predicting the weather and avoiding natural traps/pitfalls.</span></div>' +
+                        '        <div class="encounters"><strong>CHA | Deception</strong> | Hiding the truth verbally/through actions and misleading others.</span></div>' +
+                        '        <div class="encounters"><strong>CHA | Intimidation</strong> | Influencing someone/something through threats, hostility and physical presence.</span></div>' +
+                        '        <div class="encounters"><strong>CHA | Performance</strong> | Playing music, dancing, acting, storytelling and entertaining.</span></div>' +
+                        '        <div class="encounters"><strong>CHA | Persuasion</strong> | Influencing creatures through tact, discussion, friendliness, bribery and negotiation.</span></div>' +
+                        '    </div>' +
+                        '</div>';
+        generator.append(tempHTML);
+        return false;
+    });
+
     //Generate Scenario
     $("#addScenario").on("click", function(e){
         e.preventDefault();
