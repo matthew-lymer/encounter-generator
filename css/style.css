@@ -454,6 +454,11 @@
     }
 
     .box.large{
+        width: 76.66%;
+        width: 850px;
+    }
+
+    .box.large{
         width: 66.66%;
         width: 740px;
     }

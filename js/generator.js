@@ -213,11 +213,11 @@ $(document).ready(function(){
         boxes++;
         emptyGenerator(boxes);
         RNDEncounter = randomInt(0,encounters.length);
-        var tempHTML =  '<div class="box large">' +
+        var tempHTML =  '<div class="box xlarge">' +
                         '    <h2 class="handle"><img src="images/alert.png" width="25" height="25" /> Skill Guide</h2>' +
                         '    <div class="inner">' +
                         '        <div class="encounters"><strong>STR</strong></span></div>' +
-                        '        <div class="encounters"><strong>STR | Athletics</strong> | Climbing, jumping, and swimming.</span></div>' +
+                        '        <div class="encounters"><strong>Athletics</strong> | Climbing, jumping, and swimming.</span></div>' +
                         '        <hr>' +
                         '        <div class="encounters"><strong>DEX</strong></span></div>' +
                         '        <div class="encounters"><strong>Acrobatics</strong> | Acrobatic stunts, jumps, dives, rolls, flips and balance.</span></div>' +
