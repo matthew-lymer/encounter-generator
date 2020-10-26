@@ -243,6 +243,12 @@ $(document).ready(function(){
                         '        <div class="encounters"><strong>Intimidation</strong> | Influencing someone/something through threats, hostility and physical presence.</span></div>' +
                         '        <div class="encounters"><strong>Performance</strong> | Playing music, dancing, acting, storytelling and entertaining.</span></div>' +
                         '        <div class="encounters"><strong>Persuasion</strong> | Influencing creatures through tact, discussion, friendliness, bribery and negotiation.</span></div>' +
+                        '        <div class="text-center">' +
+                        '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
+                        '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
+                        '       </div>' +
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
