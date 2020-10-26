@@ -214,7 +214,7 @@ $(document).ready(function(){
         emptyGenerator(boxes);
         RNDEncounter = randomInt(0,encounters.length);
         var tempHTML =  '<div class="box xlarge">' +
-                        '    <h2 class="handle"><img src="images/alert.png" width="25" height="25" /> Skill Guide</h2>' +
+                        '    <h2 class="handle"><img src="images/note.png" width="25" height="25" /> Skill Guide</h2>' +
                         '    <div class="inner">' +
                         '        <div class="encounters"><strong>STRENGTH</strong></span></div>' +
                         '        <div class="encounters"><strong>Athletics</strong> | Climbing, jumping, and swimming.</span></div>' +
