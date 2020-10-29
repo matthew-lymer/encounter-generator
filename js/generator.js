@@ -399,6 +399,9 @@ $(document).ready(function(){
         if(typeof monsterElement["perception"] != "undefined") {
             monster_a += "<div><strong>Perception</strong> | " + monsterElement["perception"] + "</div>";
         }
+        if(typeof monsterElement["dexterity"] != "undefined") {
+            monster_a += "<div><strong>Initiative</strong> | +" + Math.floor((monsterElement["dexterity"] - 10) / 2) + "</div>";
+        }
         if(typeof monsterElement["senses"] != "undefined" && monsterElement["senses"] !== "") {
             monster_a += "<div><strong>Senses</strong> | " + monsterElement["senses"] + "</div>";
         }
@@ -410,22 +413,22 @@ $(document).ready(function(){
         }
 
         if(typeof monsterElement["strength"] != "undefined") {
-            monster_b += "<div><strong>Strength</strong> | " + monsterElement["strength"] + "</div>";
+            monster_b += "<div><strong>Strength</strong> | " + monsterElement["strength"] + " (+" + Math.floor((monsterElement["strength"] - 10) / 2) + ")</div>";
         }
         if(typeof monsterElement["dexterity"] != "undefined") {
-            monster_b += "<div><strong>Dexterity</strong> | " + monsterElement["dexterity"] + "</div>";
+            monster_b += "<div><strong>Dexterity</strong> | " + monsterElement["dexterity"] + " (+" + Math.floor((monsterElement["dexterity"] - 10) / 2) + ")</div>"
         }
         if(typeof monsterElement["constitution"] != "undefined") {
-            monster_b += "<div><strong>Constitution</strong> | " + monsterElement["constitution"] + "</div>";
+            monster_b += "<div><strong>Constitution</strong> | " + monsterElement["constitution"] + " (+" + Math.floor((monsterElement["constitution"] - 10) / 2) + ")</div>"
         }
         if(typeof monsterElement["intelligence"] != "undefined") {
-            monster_b += "<div><strong>Intelligence</strong> | " + monsterElement["intelligence"] + "</div>";
+            monster_b += "<div><strong>Intelligence</strong> | " + monsterElement["intelligence"] + " (+" + Math.floor((monsterElement["intelligence"] - 10) / 2) + ")</div>"
         }
         if(typeof monsterElement["wisdom"] != "undefined") {
-            monster_b += "<div><strong>Wisdom</strong> | " + monsterElement["wisdom"] + "</div>";
+            monster_b += "<div><strong>Wisdom</strong> | " + monsterElement["wisdom"] + " (+" + Math.floor((monsterElement["wisdom"] - 10) / 2) + ")</div>"
         }
         if(typeof monsterElement["charisma"] != "undefined") {
-            monster_b += "<div><strong>Charisma</strong> | " + monsterElement["charisma"] + "</div>";
+            monster_b += "<div><strong>Charisma</strong> | " + monsterElement["charisma"] + " (+" + Math.floor((monsterElement["charisma"] - 10) / 2) + ")</div>"
         }
         if(typeof monsterElement["constitution_save"] != "undefined" && monsterElement["constitution_save"] !== "") {
             monster_b += "<div><strong>Save (Con)</strong> | +" + monsterElement["constitution_save"] + "</div>";
