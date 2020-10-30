@@ -662,7 +662,7 @@ $(document).ready(function(){
         }
     });
 
-    $("#generator").on("keyup", ".spellName", function(e){
+    $("#generator").on("keyup focus", ".spellName", function(e){
         var query = $(this).val();
         var results = $(this).parent().find(".results");
         var spellList = "";
