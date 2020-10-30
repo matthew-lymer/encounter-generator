@@ -828,7 +828,7 @@ $(document).ready(function(){
             // $(this).parent().parent().find(".spell_c").html("<div><strong>Spell Lv.</strong></div>" + selectedSpell["level"]);
             // $(this).parent().parent().find(".spell_d").html("<div><strong>Components</strong></div>" + selectedSpell["comps"]);
             // $(this).parent().parent().find(".spell_e").html("<div><strong>Classes</strong></div>" + selectedSpell["classes"]);
-            $(this).parent().parent().find(".spell_f").html("<iframe width='100%' height='310' src='https://open5e.com/spells/" + slugify(selectedSpell["name"]) + "'></iframe>");
+            $(this).parent().parent().find(".spell_f").html("<iframe width='600' height='310' src='https://open5e.com/spells/" + slugify(selectedSpell["name"]) + "'></iframe>");
         }
 
         return false;
