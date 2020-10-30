@@ -675,27 +675,27 @@ $(document).ready(function(){
                 if(queryLEVEL == "Any Level" && queryCLASS == "Any Class"){
                     //Any Level and Class
                     if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1){
-                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span></div>";
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + " | " + value["classes"] + "</div>";
                         count++;
                     }
                 }
                 else if(queryLEVEL == "Any Level"){
                     //Any Level, specific Class
                     if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["classes"].toLowerCase().indexOf(queryCLASS.toLowerCase()) !== -1){
-                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span></div>";
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + " | " + value["classes"] + "</div>";
                         count++;
                     }
                 }
                 else if(queryCLASS == "Any Class"){
                     //Any Class, specific Level
                     if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["level"] == parseInt(queryLEVEL)){
-                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span></div>";
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + " | " + value["classes"] + "</div>";
                         count++;
                     }
                 }
                 else{
                     if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["classes"].toLowerCase().indexOf(queryCLASS.toLowerCase()) !== -1 && value["level"] == queryLEVEL){
-                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span></div>";
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + " | " + value["classes"] + "</div>";
                         count++;
                     }
                 }
