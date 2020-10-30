@@ -672,6 +672,9 @@ $(document).ready(function(){
 
         if(query.length >= 0){
             spells.forEach(function(value){
+                if(value["level"] == "0"){
+                    value["level"] = "0 (Cantrip)";
+                }
                 if(queryLEVEL == "Any Level" && queryCLASS == "Any Class"){
                     //Any Level and Class
                     if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1){
@@ -757,7 +760,7 @@ $(document).ready(function(){
 
         var selection = '<select style="" class="spellLevel">';
         selection +=    '<option name="all">Any Level</option>';
-        selection +=    '<option name="0">0</option>';
+        selection +=    '<option name="0">0 (Cantrip)</option>';
         selection +=    '<option name="1">1</option>';
         selection +=    '<option name="2">2</option>';
         selection +=    '<option name="3">3</option>';
