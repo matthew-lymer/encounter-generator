@@ -800,7 +800,7 @@ $(document).ready(function(){
                         '        <div class="spell_d left border-box one-fifth"></div>' +
                         '        <div class="spell_e left border-box one-fifth"></div>' +
                         '        <div class="clear"></div>' +
-                        '        <div class="spell_f border-box"><iframe src=""></iframe></div>' +
+                        '        <div class="spell_f border-box"></div>' +
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
@@ -823,12 +823,12 @@ $(document).ready(function(){
             alert("No spells found for this search.");
         }
         else{
-            $(this).parent().parent().find(".spell_a").html(selectedSpell["name"]);
-            $(this).parent().parent().find(".spell_b").html(selectedSpell["school"]);
-            $(this).parent().parent().find(".spell_c").html(selectedSpell["level"]);
-            $(this).parent().parent().find(".spell_d").html(selectedSpell["comps"]);
-            $(this).parent().parent().find(".spell_e").html(selectedSpell["classes"]);
-            $(this).parent().parent().find(".spell_f iframe").attr("src", "https://open5e.com/spells/" + slugify(selectedSpell["name"]));
+            // $(this).parent().parent().find(".spell_a").html("<div><strong>Spell</strong></div>" + selectedSpell["name"]);
+            // $(this).parent().parent().find(".spell_b").html("<div><strong>School</strong></div>" + selectedSpell["school"]);
+            // $(this).parent().parent().find(".spell_c").html("<div><strong>Spell Lv.</strong></div>" + selectedSpell["level"]);
+            // $(this).parent().parent().find(".spell_d").html("<div><strong>Components</strong></div>" + selectedSpell["comps"]);
+            // $(this).parent().parent().find(".spell_e").html("<div><strong>Classes</strong></div>" + selectedSpell["classes"]);
+            $(this).parent().parent().find(".spell_f").html("<iframe width='100%' height='310' src='https://open5e.com/spells/" + slugify(selectedSpell["name"]) + "'></iframe>");
         }
 
         return false;
