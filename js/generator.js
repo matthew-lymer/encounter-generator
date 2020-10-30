@@ -702,7 +702,7 @@ $(document).ready(function(){
             });
 
             if(count == 0){
-                monsterList += "<div>No spells found for this search</div>";
+                spellList += "<div>No spells found for this search</div>";
             }
 
             results.html(spellList);
