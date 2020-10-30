@@ -747,7 +747,7 @@ $(document).ready(function(){
         e.preventDefault();
         boxes++;
         emptyGenerator(boxes);
-        var selection = '<div class="spellSuggestion"><input type="text" class="spellname" placeholder="Spell name..." /><div class="results"></div></div>';
+        var selection = '<div class="spellSuggestion"><input type="text" class="spellName" placeholder="Spell name..." /><div class="results"></div></div>';
 
         selection += '<select style="" class="spellLevel">';
         selection +=    '<option name="all">Any Level</option>';
