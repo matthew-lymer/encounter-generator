@@ -138,6 +138,8 @@
         padding:5px 10px;
         border-bottom: 1px solid #aaa;
         cursor: pointer;
+        height: 22px;
+        overflow: hidden;
     }
 
     .monsterSuggestion .results div:hover,

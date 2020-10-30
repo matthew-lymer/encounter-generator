@@ -675,27 +675,27 @@ $(document).ready(function(){
                 if(queryLEVEL == "Any Level" && queryCLASS == "Any Class"){
                     //Any Level and Class
                     if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1){
-                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + " | " + value["classes"] + "</div>";
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + "</div>";
                         count++;
                     }
                 }
                 else if(queryLEVEL == "Any Level"){
                     //Any Level, specific Class
                     if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["classes"].toLowerCase().indexOf(queryCLASS.toLowerCase()) !== -1){
-                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + " | " + value["classes"] + "</div>";
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + "</div>";
                         count++;
                     }
                 }
                 else if(queryCLASS == "Any Class"){
                     //Any Class, specific Level
                     if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["level"] == parseInt(queryLEVEL)){
-                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + " | " + value["classes"] + "</div>";
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + "</div>";
                         count++;
                     }
                 }
                 else{
                     if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["classes"].toLowerCase().indexOf(queryCLASS.toLowerCase()) !== -1 && value["level"] == queryLEVEL){
-                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + " | " + value["classes"] + "</div>";
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span> | Lv. " + value["level"] + "</div>";
                         count++;
                     }
                 }
@@ -725,6 +725,13 @@ $(document).ready(function(){
         var selection = $(this).find("span").text();
         var input = $(this).parent().parent().find("input").val(selection);
         $(this).parent().parent().parent().find(".reRollMonster").trigger("click");
+        $(this).parent().hide();
+    });
+
+    $("#generator").on("click", ".spellSelection", function(e){
+        var selection = $(this).find("span").text();
+        var input = $(this).parent().parent().find("input").val(selection);
+        $(this).parent().parent().parent().find(".reRollSpell").trigger("click");
         $(this).parent().hide();
     });
 
@@ -793,10 +800,37 @@ $(document).ready(function(){
                         '        <div class="spell_d left border-box one-fifth"></div>' +
                         '        <div class="spell_e left border-box one-fifth"></div>' +
                         '        <div class="clear"></div>' +
-                        '        <div class="spell_f border-box"></div>' +
+                        '        <div class="spell_f border-box"><iframe src=""></iframe></div>' +
                         '    </div>' +
                         '</div>';
         generator.append(tempHTML);
+        return false;
+    });
+
+    $("#generator").on("click", ".reRollSpell", function(e){
+        e.preventDefault();
+        var spellName = $(this).parent().parent().find(".spellName").val();
+        var selectedSpell = 0;
+
+        spells.forEach(function(item, index){
+            if(item['name'] == spellName){
+                selectedSpell = item;
+            }
+        });
+
+
+        if(selectedSpell == 0){
+            alert("No spells found for this search.");
+        }
+        else{
+            $(this).parent().parent().find(".spell_a").html(selectedSpell["name"]);
+            $(this).parent().parent().find(".spell_b").html(selectedSpell["school"]);
+            $(this).parent().parent().find(".spell_c").html(selectedSpell["level"]);
+            $(this).parent().parent().find(".spell_d").html(selectedSpell["comps"]);
+            $(this).parent().parent().find(".spell_e").html(selectedSpell["classes"]);
+            $(this).parent().parent().find(".spell_f iframe").attr("src", "https://open5e.com/spells/" + slugify(selectedSpell["name"]));
+        }
+
         return false;
     });
 
