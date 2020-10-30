@@ -667,7 +667,7 @@ $(document).ready(function(){
         var results = $(this).parent().find(".results");
         var spellList = "";
         var count = 0;
-        var queryLEVEL = parseInt($(this).parent().parent().find(".spellLevel").val());
+        var queryLEVEL = $(this).parent().parent().find(".spellLevel").val();
         var queryCLASS = $(this).parent().parent().find(".spellClass").val();
 
         if(query.length >= 1){
@@ -681,14 +681,14 @@ $(document).ready(function(){
                 }
                 else if(queryLEVEL == "Any Level"){
                     //Any Level, specific Class
-                    if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["level"] == queryLEVEL){
+                    if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["classes"].toLowerCase().indexOf(queryCLASS.toLowerCase()) !== -1){
                         spellList += "<div class='spellSelection'><span>" + value["name"] + "</span></div>";
                         count++;
                     }
                 }
                 else if(queryCLASS == "Any Class"){
                     //Any Class, specific Level
-                    if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["classes"].toLowerCase().indexOf(queryCLASS.toLowerCase()) !== -1){
+                    if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["level"] == parseInt(queryLEVEL)){
                         spellList += "<div class='spellSelection'><span>" + value["name"] + "</span></div>";
                         count++;
                     }
