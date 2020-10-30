@@ -97,7 +97,8 @@
         resize:none;
     }
 
-    input[type='text'].monsterName{
+    input[type='text'].monsterName,
+    input[type='text'].spellName{
         padding: 0 15px;
         margin: 0 5px 0 5px;
         height: 38px;
@@ -109,7 +110,8 @@
         border-radius: 3px;
     }
 
-    .monsterSuggestion{
+    .monsterSuggestion,
+    .spellSuggestion{
         display: inline-block;
         vertical-align: top;
         margin: 10px 0 0 0;
@@ -117,7 +119,8 @@
         text-align: left;
     }
 
-    .monsterSuggestion .results {
+    .monsterSuggestion .results,
+    .spellSuggestion .results{
         position: absolute;
         top: 46px;
         left: 5px;
@@ -130,13 +133,15 @@
         box-shadow: 0px 0px 5px rgba(0,0,0,0.8);
     }
 
-    .monsterSuggestion .results div{
+    .monsterSuggestion .results div,
+    .spellSuggestion .results div{
         padding:5px 10px;
         border-bottom: 1px solid #aaa;
         cursor: pointer;
     }
 
-    .monsterSuggestion .results div:hover{
+    .monsterSuggestion .results div:hover,
+    .spellSuggestion .results div:hover{
         background: #3081a0;
         color: #fff;
     }
@@ -964,11 +969,13 @@
             padding-right: 0!important
         }
 
-        input[type='text'].monsterName{
+        input[type='text'].monsterName,
+        input[type='text'].spellName{
             width: 150px;
         }
 
-        .monsterSuggestion + select{
+        .monsterSuggestion + select,
+        .spellSuggestion + select{
             padding: 0 5px;
             min-width: 0;
             width: 80px;
@@ -1001,24 +1008,28 @@
             font-size: 11px;
         }
 
-        input[type='text'].monsterName{
+        input[type='text'].monsterName,
+        input[type='text'].spellName{
             width: 130px;
         }
 
-        .monsterSuggestion + select{
+        .monsterSuggestion + select,
+        .spellSuggestion + select{
             padding: 0;
             min-width: 0;
             width: 70px;
         }
 
-        .monsterSuggestion .results {
+        .monsterSuggestion .results,
+        .spellSuggestion .results{
             width: 300px;
             max-height: 180px;
         }
     }
 
     @media screen and (max-width:440px){
-        .monsterSuggestion .results {
+        .monsterSuggestion .results,
+        .spellSuggestion .results{
             width: 200px;
         }
     }
