@@ -670,7 +670,7 @@ $(document).ready(function(){
         var queryLEVEL = $(this).parent().parent().find(".spellLevel").val();
         var queryCLASS = $(this).parent().parent().find(".spellClass").val();
 
-        if(query.length >= 1){
+        if(query.length >= 0){
             spells.forEach(function(value){
                 if(queryLEVEL == "Any Level" && queryCLASS == "Any Class"){
                     //Any Level and Class
