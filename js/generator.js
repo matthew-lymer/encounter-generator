@@ -662,8 +662,63 @@ $(document).ready(function(){
         }
     });
 
+    $("#generator").on("keyup", ".spellName", function(e){
+        var query = $(this).val();
+        var results = $(this).parent().find(".results");
+        var spellList = "";
+        var count = 0;
+        var queryLEVEL = parseInt($(this).parent().parent().find(".spellLevel").val());
+        var queryCLASS = $(this).parent().parent().find(".spellClass").val();
+
+        if(query.length >= 1){
+            spells.forEach(function(value){
+                if(queryLEVEL == "Any Level" && queryCLASS == "Any Class"){
+                    //Any Level and Class
+                    if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1){
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span></div>";
+                        count++;
+                    }
+                }
+                else if(queryLEVEL == "Any Level"){
+                    //Any Level, specific Class
+                    if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["level"] == queryLEVEL){
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span></div>";
+                        count++;
+                    }
+                }
+                else if(queryCLASS == "Any Class"){
+                    //Any Class, specific Level
+                    if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["classes"].toLowerCase().indexOf(queryCLASS.toLowerCase()) !== -1){
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span></div>";
+                        count++;
+                    }
+                }
+                else{
+                    if(value["name"].toLowerCase().indexOf(query.toLowerCase()) !== -1 && value["classes"].toLowerCase().indexOf(queryCLASS.toLowerCase()) !== -1 && value["level"] == queryLEVEL){
+                        spellList += "<div class='spellSelection'><span>" + value["name"] + "</span></div>";
+                        count++;
+                    }
+                }
+            });
+
+            if(count == 0){
+                monsterList += "<div>No spells found for this search</div>";
+            }
+
+            results.html(spellList);
+            results.show();
+        }
+        else{
+            results.hide();
+        }
+    });
+
     $("#generator").on("focus", ".monsterName", function(e){
         $("#generator .monsterName").trigger("keyup");
+    });
+
+    $("#generator").on("focus", ".spellName", function(e){
+        $("#generator .spellName").trigger("keyup");
     });
 
     $("#generator").on("click", ".monsterSelection", function(e){
@@ -678,6 +733,71 @@ $(document).ready(function(){
         setTimeout(function(){
             results.hide();
         },100);
+    });
+
+    $("#generator").on("blur", ".spellName", function(e){
+        var results = $(this).parent().find(".results");
+        setTimeout(function(){
+            results.hide();
+        },100);
+    });
+
+    //Generate Spell
+    $("#addSpell").on("click", function(e){
+        e.preventDefault();
+        boxes++;
+        emptyGenerator(boxes);
+        var selection = '<div class="spellSuggestion"><input type="text" class="spellname" placeholder="Spell name..." /><div class="results"></div></div>';
+
+        selection += '<select style="" class="spellLevel">';
+        selection +=    '<option name="all">Any Level</option>';
+        selection +=    '<option name="0">0</option>';
+        selection +=    '<option name="1">1</option>';
+        selection +=    '<option name="2">2</option>';
+        selection +=    '<option name="3">3</option>';
+        selection +=    '<option name="4">4</option>';
+        selection +=    '<option name="5">5</option>';
+        selection +=    '<option name="6">6</option>';
+        selection +=    '<option name="7">7</option>';
+        selection +=    '<option name="8">8</option>';
+        selection +=    '<option name="9">9</option>';
+        selection += '</select>';
+        selection += '<select style="" class="spellClass">';
+        selection +=    '<option name="all">Any Class</option>';
+        selection +=    '<option name="bard">Bard</option>';
+        selection +=    '<option name="cleric">Cleric</option>';
+        selection +=    '<option name="druid">Druid</option>';
+        selection +=    '<option name="paladin">Paladin</option>';
+        selection +=    '<option name="paladin">Paladin</option>';
+        selection +=    '<option name="ranger">Ranger</option>';
+        selection +=    '<option name="ritual caster">Ritual Caster</option>';
+        selection +=    '<option name="sorcerer">Sorcerer</option>';
+        selection +=    '<option name="wizard">Wizard</option>';
+        selection +=    '<option name="warlock">Warlock</option>';
+        selection += '</select>';
+        selection += '<a class="reRollSpell reroll" style="" href="#"><h4>SEARCH&nbsp;&nbsp;<img src="images/dice.png" width="24" height="24" /></h4></a>';
+
+        var tempHTML =  '<div class="box overflow large">' +
+                        '    <h2 class="handle"><img src="images/monster.png" width="25" height="25" /> Spell</h2>' +
+                        '    <div class="inner">' +
+                        '        <div class="text-center top-controls">' +
+                                    selection +
+                        '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
+                        '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
+                        '       </div>' +
+                        '        <div class="spell_a left border-box one-fifth"></div>' +
+                        '        <div class="spell_b left border-box one-fifth"></div>' +
+                        '        <div class="spell_c left border-box one-fifth"></div>' +
+                        '        <div class="spell_d left border-box one-fifth"></div>' +
+                        '        <div class="spell_e left border-box one-fifth"></div>' +
+                        '        <div class="clear"></div>' +
+                        '        <div class="spell_f border-box"></div>' +
+                        '    </div>' +
+                        '</div>';
+        generator.append(tempHTML);
+        return false;
     });
 
     //Generate NPC
