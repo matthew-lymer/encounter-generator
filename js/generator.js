@@ -747,9 +747,8 @@ $(document).ready(function(){
         e.preventDefault();
         boxes++;
         emptyGenerator(boxes);
-        var selection = '<div class="spellSuggestion"><input type="text" class="spellName" placeholder="Spell name..." /><div class="results"></div></div>';
 
-        selection += '<select style="" class="spellLevel">';
+        var selection = '<select style="" class="spellLevel">';
         selection +=    '<option name="all">Any Level</option>';
         selection +=    '<option name="0">0</option>';
         selection +=    '<option name="1">1</option>';
@@ -775,7 +774,8 @@ $(document).ready(function(){
         selection +=    '<option name="wizard">Wizard</option>';
         selection +=    '<option name="warlock">Warlock</option>';
         selection += '</select>';
-        selection += '<a class="reRollSpell reroll" style="" href="#"><h4>SEARCH&nbsp;&nbsp;<img src="images/dice.png" width="24" height="24" /></h4></a>';
+        selection += '<div class="spellSuggestion"><input type="text" class="spellName" placeholder="Spell name..." /><div class="results"></div></div>';
+        selection += '<a class="reRollSpell reroll" style="display:none" href="#"><h4>SEARCH</h4></a>';
 
         var tempHTML =  '<div class="box overflow large">' +
                         '    <h2 class="handle"><img src="images/monster.png" width="25" height="25" /> Spell</h2>' +
