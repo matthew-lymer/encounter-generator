@@ -1442,7 +1442,7 @@ function NPCGenerator(){
     eyes[13] = '\ red';
     eyes[14] = '\ violet';
     eyes[15] = '\ blue with gold flecks';
-    eyes[26] = '\ grey';
+    eyes[16] = '\ grey';
 
     oddEyeColourRef = [];
     oddEyeColourRef[0] = 'blue';
