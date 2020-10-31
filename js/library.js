@@ -1503,6 +1503,18 @@ function NPCGenerator(){
     color[8] = '\ red';
     color[9] = '\ none/dyed';
 
+    var colourRef = [];
+    colourRef[0] = 'brown';
+    colourRef[1] = 'brown';
+    colourRef[2] = 'brown';
+    colourRef[3] = 'black';
+    colourRef[4] = 'black';
+    colourRef[5] = 'yellow';
+    colourRef[6] = 'yellow';
+    colourRef[7] = 'red';
+    colourRef[8] = 'red';
+    colourRef[9] = 'transparent';
+
     var rcolor = Math.random() * color.length;
     rcolor = Math.floor(rcolor);
 
@@ -1528,16 +1540,40 @@ function NPCGenerator(){
     hair[18] = '\ pink [dyed]';
     hair[19] = '\ blue [dyed]';
 
+    var hairColourRef = [];
+    hairColourRef[0] = 'transparent';
+    hairColourRef[1] = 'green';
+    hairColourRef[2] = 'blue';
+    hairColourRef[3] = 'silver';
+    hairColourRef[4] = 'white';
+    hairColourRef[5] = 'grey';
+    hairColourRef[6] = 'orange';
+    hairColourRef[7] = 'red';
+    hairColourRef[8] = 'pink';
+    hairColourRef[9] = 'linear-gradient(to right, red, orange, yellow, green, blue, violet)';
+    hairColourRef[10] = 'violet';
+    hairColourRef[11] = 'darkgreen';
+    hairColourRef[12] = 'darkblue';
+    hairColourRef[13] = 'silver';
+    hairColourRef[14] = 'white';
+    hairColourRef[15] = 'black';
+    hairColourRef[16] = 'teal';
+    hairColourRef[17] = 'linear-gradient(to right, yellow, blue, yellow)';
+    hairColourRef[18] = 'pink';
+    hairColourRef[18] = 'lightblue';
+
     var rhair = Math.random() * hair.length;
     rhair = Math.floor(rhair);
 
     if (rcolor<9)
     {
     NPCHtml2 += (color[rcolor]);
+    NPCHtml2 += '<i class="col" style="background:'+colourRef[rcolor]+';"></i>';
     }
     else
     {
     NPCHtml2 += (hair[rhair]);
+    NPCHtml2 += '<i class="col" style="background:'+hairColourRef[rhair]+';"></i>';
     }
 
     NPCHtml2 += ("<br /><b>Height</b> |" )
