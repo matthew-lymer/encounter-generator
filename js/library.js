@@ -1560,7 +1560,7 @@ function NPCGenerator(){
     hairColourRef[16] = 'teal';
     hairColourRef[17] = 'linear-gradient(to right, yellow, blue, yellow)';
     hairColourRef[18] = 'pink';
-    hairColourRef[18] = 'lightblue';
+    hairColourRef[19] = 'lightblue';
 
     var rhair = Math.random() * hair.length;
     rhair = Math.floor(rhair);
