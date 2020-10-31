@@ -1541,7 +1541,7 @@ function NPCGenerator(){
     hair[19] = '\ blue [dyed]';
 
     var hairColourRef = [];
-    hairColourRef[0] = 'transparent';
+    hairColourRef[0] = 'none';
     hairColourRef[1] = 'green';
     hairColourRef[2] = 'blue';
     hairColourRef[3] = 'silver';
