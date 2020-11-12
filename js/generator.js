@@ -775,7 +775,7 @@ $(document).ready(function(){
         var selection = '<select style="" class="pcRace">';
         selection +=    '<option name="" disabled selected>Select PC Race</option>';
 
-        raceList.each(function(item, index){
+        raceList.forEach(function(item, index){
             selection += '<option name="' + index + '">' + item["title"] + '</option>';
         });
 
