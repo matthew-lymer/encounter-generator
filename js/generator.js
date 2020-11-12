@@ -662,6 +662,20 @@ $(document).ready(function(){
         }
     });
 
+    $("#generator").on("change", ".pcRace", function(e){
+        var raceID = parseInt($(this).val());
+        var race = raceList[raceID]
+        var html = "<h5>" + race["title"] + "</h5>";
+        html += "<hr>" + race["description"];
+
+        race["subraces"].forEach(function(value){
+            html += "<hr><h6>Subrace: " + value["title"] + "</h6>";
+            html += value["description"];
+        });
+
+        $(this).parent().parent().find(".pc_a").html(html);
+    });
+
     $("#generator").on("keyup focus", ".spellName", function(e){
         var query = $(this).val();
         var results = $(this).parent().find(".results");
@@ -750,6 +764,40 @@ $(document).ready(function(){
         setTimeout(function(){
             results.hide();
         },100);
+    });
+
+    //Show Race Details
+    $("#addRace").on("click", function(e){
+        e.preventDefault();
+        boxes++;
+        emptyGenerator(boxes);
+
+        var selection = '<select style="" class="pcRace">';
+        selection +=    '<option name="" disabled selected>Select PC Race</option>';
+
+        raceList.each(function(item, index){
+            selection += '<option name="' + index + '">' + item["title"] + '</option>';
+        });
+
+        selection += '</select>';
+        selection += '<a class="reRollSpell reroll" style="display:none" href="#"><h4>SEARCH</h4></a>';
+
+        var tempHTML =  '<div class="box overflow large">' +
+                        '    <h2 class="handle"><img src="images/npc.png" width="25" height="25" /> PC Race</h2>' +
+                        '    <div class="inner">' +
+                        '        <div class="text-center top-controls">' +
+                                    selection +
+                        '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
+                        '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
+                        '       </div>' +
+                        '        <div class="border-box pc_a"></div>' +
+                        '        <div class="clear"></div>' +
+                        '    </div>' +
+                        '</div>';
+        generator.append(tempHTML);
+        return false;
     });
 
     //Generate Spell
