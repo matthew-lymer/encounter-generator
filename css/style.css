@@ -91,6 +91,7 @@
     select{
         padding: 0 15px;
         min-width: 100px;
+        max-width: 100%;
         margin: 15px 5px 0 5px;
         height: 38px;
         display: inline-block;
@@ -420,7 +421,7 @@
     .box,
     .box-placeholder{
         width: 33.33%;
-        width: 380px;
+        width: 420px;
         display: inline-block;
         padding: 0px;
         margin: 15px;
@@ -863,7 +864,6 @@
     select.itemSelect{
         margin-left: 0;
         margin-right: 0;
-        width: 100%;
     }
 
     @media screen and (max-width:900px){
