@@ -726,7 +726,7 @@ $(document).ready(function(){
                 html += "</table>";
             }
 
-            html += "<hr><br>";
+            html += "<hr>";
             html += classItem["desc"];
 
         $(this).parent().parent().find(".class_a").html(html);
