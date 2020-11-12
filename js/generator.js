@@ -695,24 +695,32 @@ $(document).ready(function(){
 
         var tableRows = classItem["table"].split("| \n|");
         var tableRowCells = "";
-
-        var html = classItem["name"];
-            html += "<br><br>";
+        var rowCount = 0;
+        var html = "<hr><h2>" + classItem["name"] + "</h2>";
+            html += "<hr>";
 
             html += "<table>";
             tableRows.forEach(function(value){
                 tableRowCells = value.split("|");
                 html += "<tr>";
                 tableRowCells.forEach(function(tableCell){
-                    html += "<td>";
-                    html += tableCell;
-                    html += "</td>";
+                    if(rowCount == 0){
+                        html += "<th>";
+                        html += tableCell;
+                        html += "</th>";
+                    }
+                    else{
+                        html += "<td>";
+                        html += tableCell;
+                        html += "</td>";
+                    }
                 });
                 html += "</tr>";
+                rowCount++;
             });
             html += "</table>";
 
-            html += "<br><br>";
+            html += "<hr><br>";
             html += classItem["desc"];
 
         $(this).parent().parent().find(".class_a").html(html);
