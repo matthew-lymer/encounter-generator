@@ -44,7 +44,7 @@
     h4{
         font-size: 15px;
         line-height: 24px;
-        padding: 7px 0;
+        padding: 7px 0 0 0;
     }
 
     h5{
@@ -70,6 +70,16 @@
 
     table tbody tr:nth-child(2n) {
         background: #ddd;
+    }
+
+    table.archetypes h3{
+        padding: 0;
+    }
+
+    table.archetypes tr th,
+    table.archetypes tr td{
+        padding: 10px 20px;
+        box-sizing: border-box;
     }
 
     label{

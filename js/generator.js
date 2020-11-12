@@ -730,7 +730,7 @@ $(document).ready(function(){
             html += classItem["desc"];
 
             html += "<hr>";
-            html += "<table>";
+            html += "<table class='archetypes'>";
             html += "<tr><th><h3>" + classItem["name"] + " " + classItem["subtypes_name"] + "</h3></th></tr>";
 
             classItem["archetypes"].forEach(function(value){
