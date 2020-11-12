@@ -693,11 +693,6 @@ $(document).ready(function(){
         var itemID = parseInt($(this).val());
         var item = items[itemID];
 
-        race["subraces"].forEach(function(value){
-            html += "<hr><h4>Subrace: " + value["title"] + "</h4>";
-            html += value["description"];
-        });
-
         $(this).parent().parent().find(".item_c iframe").attr("src", 'https://roll20.net'+item[1]+'#pageAttrs');
     });
 
