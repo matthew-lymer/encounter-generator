@@ -689,6 +689,14 @@ $(document).ready(function(){
         $(this).parent().parent().find(".pc_a").html(html);
     });
 
+    $("#generator").on("change", ".pcClass", function(e){
+        var classID = parseInt($(this).val());
+        var classItem = classList[classID];
+        var html = classItem["name"] + "\n \n" + classItem["table"] + "\n \n" + classItem["desc"];
+
+        $(this).parent().parent().find(".class_a").text(html);
+    });
+
     $("#generator").on("change", ".itemSelect", function(e){
         var itemID = parseInt($(this).val());
         var item = items[itemID];
@@ -813,6 +821,40 @@ $(document).ready(function(){
                         '           height="26" /></a>' +
                         '       </div>' +
                         '        <div class="border-box pc_a"></div>' +
+                        '        <div class="clear"></div>' +
+                        '    </div>' +
+                        '</div>';
+        generator.append(tempHTML);
+        return false;
+    });
+
+    //Show Class Details
+    $("#addClass").on("click", function(e){
+        e.preventDefault();
+        boxes++;
+        emptyGenerator(boxes);
+
+        var selection = '<select style="" class="pcClass">';
+        selection +=    '<option value="" disabled selected>Select Class</option>';
+
+        classList.forEach(function(item, index){
+            selection += '<option value="' + index + '">' + item["name"] + '</option>';
+        });
+
+        selection += '</select>';
+        selection += '<a class="reRollSpell reroll" style="display:none" href="#"><h4>SEARCH</h4></a>';
+
+        var tempHTML =  '<div class="box overflow large">' +
+                        '    <h2 class="handle"><img src="images/spell.png" width="25" height="25" /> PC Race</h2>' +
+                        '    <div class="inner">' +
+                        '        <div class="text-center top-controls">' +
+                                    selection +
+                        '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
+                        '           height="20" /></a>' +
+                        '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
+                        '           height="26" /></a>' +
+                        '       </div>' +
+                        '        <div class="border-box class_a"></div>' +
                         '        <div class="clear"></div>' +
                         '    </div>' +
                         '</div>';
