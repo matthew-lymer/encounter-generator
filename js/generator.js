@@ -705,7 +705,7 @@ $(document).ready(function(){
                 html += "<tr>";
                 tableRowCells.forEach(function(tableCell){
                     html += "<td>";
-                    tableCell;
+                    html += tableCell;
                     html += "</td>";
                 });
                 html += "</tr>";
