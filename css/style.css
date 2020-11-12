@@ -53,6 +53,25 @@
         padding: 5px 0;
     }
 
+    table{
+        width: 100%;
+    }
+
+    table tr th{
+        background: #666;
+        color: #fff;
+    }
+
+    table tr th,
+    table tr td{
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    table tr:nth-child(2n+1){
+        background: #ddd
+    }
+
     label{
         font-size: 16px;
         line-height: 37px;

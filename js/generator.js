@@ -665,11 +665,11 @@ $(document).ready(function(){
     $("#generator").on("change", ".pcRace", function(e){
         var raceID = parseInt($(this).val());
         var race = raceList[raceID];
-        var html = "<h5>" + race["title"] + "</h5>";
+        var html = "<hr><h2>" + race["title"] + "</h2>";
         html += "<hr>" + race["description"];
 
         race["subraces"].forEach(function(value){
-            html += "<hr><h6>Subrace: " + value["title"] + "</h6>";
+            html += "<hr><h4>Subrace: " + value["title"] + "</h4>";
             html += value["description"];
         });
 
