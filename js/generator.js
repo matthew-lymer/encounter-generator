@@ -729,6 +729,16 @@ $(document).ready(function(){
             html += "<hr>";
             html += classItem["desc"];
 
+            html += "<hr>";
+            html += "<table>";
+            html += "<tr><th><h3>" + classItem["name"] + " " + classItem["subtypes_name"] + "</h3></th></tr>";
+
+            classItem["archetypes"].forEach(function(value){
+                html += "<tr><td>" + value["desc"] + "</td></tr>";
+            });
+
+            html += "</table>";
+
         $(this).parent().parent().find(".class_a").html(html);
     });
 
