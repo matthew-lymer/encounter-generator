@@ -689,6 +689,18 @@ $(document).ready(function(){
         $(this).parent().parent().find(".pc_a").html(html);
     });
 
+    $("#generator").on("change", ".itemSelect", function(e){
+        var itemID = parseInt($(this).val());
+        var item = items[itemID];
+
+        race["subraces"].forEach(function(value){
+            html += "<hr><h4>Subrace: " + value["title"] + "</h4>";
+            html += value["description"];
+        });
+
+        $(this).parent().parent().find(".item_c iframe").attr("src", 'https://roll20.net'+item[1]+'#pageAttrs');
+    });
+
     $("#generator").on("keyup focus", ".spellName", function(e){
         var query = $(this).val();
         var results = $(this).parent().find(".results");

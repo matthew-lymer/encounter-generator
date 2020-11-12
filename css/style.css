@@ -860,6 +860,12 @@
         padding-top: 10px;
     }
 
+    select.itemSelect{
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
     @media screen and (max-width:900px){
         header h1 {
             padding: 3px 0px 3px 7px;
