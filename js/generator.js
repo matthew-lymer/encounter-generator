@@ -337,14 +337,27 @@ $(document).ready(function(){
         boxes++;
         emptyGenerator(boxes);
         RNDItem = randomInt(0,items.length);
+
+        var selection = '<select style="" class="itemSelect">';
+        selection +=    '<option value="" disabled selected>Select Item</option>';
+
+        items.forEach(function(item, index){
+            selection += '<option value="' + index + '">' + item[0] + ' (' + item[2] + ')</option>';
+        });
+
+        selection += '</select>';
+
         var tempHTML =  '<div class="box">' +
                         '    <h2 class="handle"><img src="images/item.png" width="25" height="25" /> Item</h2>' +
                         '    <div class="inner">' +
+                        '        <div class="text-center top-controls">' +
+                                    selection +
+                        '        </div>' +
                         '        <div class="item_a"><strong>Name</strong> | <span>'+items[RNDItem][0]+'</span></div>' +
                         '        <div class="item_b"><strong>Description</strong> | <span>'+items[RNDItem][2]+'</span></div>' +
                         '        <div class="item_c"><iframe src="https://roll20.net'+items[RNDItem][1]+'#pageAttrs"></iframe></div>' +
                         '        <div class="text-center">' +
-                        '           <a class="reRollItem reroll" href="#"><h4>ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
+                        '           <a class="reRollItem reroll" href="#"><h4>RANDOM ROLL&nbsp;&nbsp;<img src="images/dice.png" width="24"' +
                         '           height="24" /></h4></a>' +
                         '           <a class="remove" href="#"><img src="images/remove.png" width="20"' +
                         '           height="20" /></a>' +
