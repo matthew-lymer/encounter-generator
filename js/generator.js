@@ -692,9 +692,30 @@ $(document).ready(function(){
     $("#generator").on("change", ".pcClass", function(e){
         var classID = parseInt($(this).val());
         var classItem = classList[classID];
-        var html = classItem["name"] + "\n \n" + classItem["table"] + "\n \n" + classItem["desc"];
 
-        $(this).parent().parent().find(".class_a").text(html);
+        var tableRows = classItem["table"].split("| \n|");
+        var tableRowCells = "";
+
+        var html = classItem["name"];
+            html += "<br><br>";
+
+            html += "<table>";
+            tableRows.forEach(function(value){
+                tableRowCells = value.split("|");
+                html += "<tr>";
+                tableRowCells.forEach(function(tableCell){
+                    html += "<td>";
+                    tableCell;
+                    html += "</td>";
+                });
+                html += "</tr>";
+            });
+            html += "</table>";
+
+            html += "<br><br>";
+            html += classItem["desc"];
+
+        $(this).parent().parent().find(".class_a").html(html);
     });
 
     $("#generator").on("change", ".itemSelect", function(e){
