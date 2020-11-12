@@ -693,32 +693,38 @@ $(document).ready(function(){
         var classID = parseInt($(this).val());
         var classItem = classList[classID];
 
-        var tableRows = classItem["table"].split("| \n|");
-        var tableRowCells = "";
         var rowCount = 0;
         var html = "<hr><h2>" + classItem["name"] + "</h2>";
             html += "<hr>";
 
-            html += "<table>";
-            tableRows.forEach(function(value){
-                tableRowCells = value.split("|");
-                html += "<tr>";
-                tableRowCells.forEach(function(tableCell){
-                    if(rowCount == 0){
-                        html += "<th>";
-                        html += tableCell;
-                        html += "</th>";
-                    }
-                    else{
-                        html += "<td>";
-                        html += tableCell;
-                        html += "</td>";
-                    }
+            if(classItem["table"].substring(0, 7) == "<table>"){
+                //Already Formatted
+                html += classItem["table"];
+            }
+            else{
+                var tableRows = classItem["table"].split("| \n|");
+                var tableRowCells = "";
+                html += "<table>";
+                tableRows.forEach(function(value){
+                    tableRowCells = value.split("|");
+                    html += "<tr>";
+                    tableRowCells.forEach(function(tableCell){
+                        if(rowCount == 0){
+                            html += "<th>";
+                            html += tableCell;
+                            html += "</th>";
+                        }
+                        else{
+                            html += "<td>";
+                            html += tableCell;
+                            html += "</td>";
+                        }
+                    });
+                    html += "</tr>";
+                    rowCount++;
                 });
-                html += "</tr>";
-                rowCount++;
-            });
-            html += "</table>";
+                html += "</table>";
+            }
 
             html += "<hr><br>";
             html += classItem["desc"];
