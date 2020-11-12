@@ -664,7 +664,7 @@ $(document).ready(function(){
 
     $("#generator").on("change", ".pcRace", function(e){
         var raceID = parseInt($(this).val());
-        var race = raceList[raceID]
+        var race = raceList[raceID];
         var html = "<h5>" + race["title"] + "</h5>";
         html += "<hr>" + race["description"];
 
