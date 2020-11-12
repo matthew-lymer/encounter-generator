@@ -773,10 +773,10 @@ $(document).ready(function(){
         emptyGenerator(boxes);
 
         var selection = '<select style="" class="pcRace">';
-        selection +=    '<option name="" disabled selected>Select PC Race</option>';
+        selection +=    '<option value="" disabled selected>Select PC Race</option>';
 
         raceList.forEach(function(item, index){
-            selection += '<option name="' + index + '">' + item["title"] + '</option>';
+            selection += '<option value="' + index + '">' + item["title"] + '</option>';
         });
 
         selection += '</select>';
