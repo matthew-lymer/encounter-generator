@@ -739,7 +739,10 @@ $(document).ready(function(){
 
             html += "</table>";
 
-        $(this).parent().parent().find(".class_a").html(html);
+        $(this).parent().parent().find(".class_a").html(classItem["hp"]);
+        $(this).parent().parent().find(".class_b").html(classItem["prof"]);
+        $(this).parent().parent().find(".class_c").html(classItem["equipment"]);
+        $(this).parent().parent().find(".class_d").html(html);
     });
 
     $("#generator").on("change", ".itemSelect", function(e){
@@ -899,7 +902,10 @@ $(document).ready(function(){
                         '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
                         '           height="26" /></a>' +
                         '       </div>' +
-                        '        <div class="border-box class_a"></div>' +
+                        '        <div class="border-box left one-half class_a"></div>' +
+                        '        <div class="border-box left one-half class_b"></div>' +
+                        '        <div class="border-box class_c"></div>' +
+                        '        <div class="border-box class_d"></div>' +
                         '        <div class="clear"></div>' +
                         '    </div>' +
                         '</div>';
