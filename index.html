@@ -74,12 +74,14 @@
             pagemap(document.querySelector('#minimap'), {
                 viewport: null,
                 styles: {
-                    'header,article,h1,h2,h3,.box,tr,.ability': 'rgba(0,0,0,0.2)'
+                    'header': 'rgba(0,0,0,0.1)',
+                    '.box,.box .inner': '#2c6373',
+                    '.box h1,.box h2,.box h3,.box h4,.box tr,.box input,.box textarea,.box select,.box iframe,.box .inner div,.box .inner p': 'rgba(255,255,255,0.4)',
                 },
-                back: 'rgba(0,0,0,0.15)',
-                view: 'rgba(0,0,0,0.15)',
-                drag: 'rgba(0,0,0,0.20)',
-                interval: null
+                back: 'rgba(0,0,0,0.1)',
+                view: 'rgba(0,0,0,0.1)',
+                drag: 'rgba(0,0,0,0.2)',
+                interval: 500
             });
         </script>
     </body>
