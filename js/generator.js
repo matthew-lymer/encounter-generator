@@ -29,7 +29,16 @@ $(document).ready(function(){
         $("#generator").sortable({
             handle: ".drag",
             placeholder: 'box-placeholder',
+            update: function( event, ui ){
+                setTimeout(function(){
+                    $("#main").trigger("click");
+                },50);
+            }
         });
+
+        setTimeout(function(){
+            $("#main").trigger("click");
+        },50);
     }
 
     function compare(a,b){
