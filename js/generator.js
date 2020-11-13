@@ -738,6 +738,7 @@ $(document).ready(function(){
 
             html += "</table>";
 
+        $(this).parent().parent().find(".class_b .column").removeClass("off");
         $(this).parent().parent().find(".class_a").html("<hr><h2>" + classItem["name"] + "</h2><hr>");
         $(this).parent().parent().find(".class_b .ability.classHP").html(classItem["hp"]);
         $(this).parent().parent().find(".class_b .ability.classPR").html(classItem["prof"]);
@@ -903,7 +904,7 @@ $(document).ready(function(){
                         '           height="26" /></a>' +
                         '       </div>' +
                         '        <div class="border-box class_a"></div>' +
-                        '        <div class="border-box class_b"><div class="column triple">' +
+                        '        <div class="border-box class_b"><div class="column off triple">' +
                         '               <div class="ability classHP"></div>' +
                         '               <div class="ability classPR"></div>' +
                         '               <div class="ability classEQ"></div>' +

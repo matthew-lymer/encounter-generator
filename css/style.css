@@ -616,6 +616,10 @@
         padding: 10px 0;
     }
 
+    .column.off{
+        display: none;
+    }
+
     .column.triple{
         -webkit-column-count: 3; /* Chrome, Safari, Opera */
         -moz-column-count: 3; /* Firefox */
