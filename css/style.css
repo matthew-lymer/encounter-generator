@@ -397,6 +397,7 @@
         height: 2px;
         display: block;
         background: #2d6373;
+        background: #fff;
         border-radius: 50px;
         margin: 0 0 8px 0;
     }
@@ -960,8 +961,10 @@
         padding: 10px 5px 0 5px;
         box-sizing: border-box;
         width: 100%;
+        max-width: 150px;
         height: auto!important;
         display: block;
+        margin: 0 auto;
     }
 
     select.itemSelect{
@@ -982,7 +985,7 @@
         #filter{
             display: none;
             padding: 0;
-            width: 440px;
+            width: 270px;
             max-width: 100%;
             text-align: center;
             background: rgba(41, 76, 86, 0.9);
@@ -995,6 +998,11 @@
             width: 42%;
             display: inline-block;
             background: rgb(38, 62, 72);
+        }
+
+        #filter a.roll{
+            width: 100%;
+            box-sizing: border-box;
         }
 
         #filter .buyMeACoffee{
@@ -1057,6 +1065,10 @@
             box-shadow: 0 0 0 1px #111;
             background: #fff;
             padding: 0!important; */
+            display: none;
+        }
+
+        #minimap{
             display: none;
         }
 
