@@ -610,6 +610,12 @@
         padding: 10px 0;
     }
 
+    .column.triple{
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+    }
+
     .ability{
         padding: 10px;
         box-sizing: border-box;

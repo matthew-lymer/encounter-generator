@@ -739,10 +739,10 @@ $(document).ready(function(){
             html += "</table>";
 
         $(this).parent().parent().find(".class_a").html("<hr><h2>" + classItem["name"] + "</h2><hr>");
-        $(this).parent().parent().find(".class_b").html(classItem["hp"]);
-        $(this).parent().parent().find(".class_c").html(classItem["prof"]);
-        $(this).parent().parent().find(".class_d").html(classItem["equipment"]);
-        $(this).parent().parent().find(".class_e").html(html);
+        $(this).parent().parent().find(".class_b .ability.classHP").html(classItem["hp"]);
+        $(this).parent().parent().find(".class_b .ability.classPR").html(classItem["prof"]);
+        $(this).parent().parent().find(".class_b .ability.classEQ").html(classItem["equipment"]);
+        $(this).parent().parent().find(".class_c").html(html);
     });
 
     $("#generator").on("change", ".itemSelect", function(e){
@@ -903,10 +903,12 @@ $(document).ready(function(){
                         '           height="26" /></a>' +
                         '       </div>' +
                         '        <div class="border-box class_a"></div>' +
-                        '        <div class="border-box left one-third class_b"></div>' +
-                        '        <div class="border-box left one-third class_c"></div>' +
-                        '        <div class="border-box left one-third class_d"></div>' +
-                        '        <div class="border-box class_e clear"></div>' +
+                        '        <div class="border-box class_b"><div class="column triple">' +
+                        '               <div class="ability classHP"></div>' +
+                        '               <div class="ability classPR"></div>' +
+                        '               <div class="ability classEQ"></div>' +
+                        '        </div></div>' +
+                        '        <div class="border-box class_c clear"></div>' +
                         '        <div class="clear"></div>' +
                         '    </div>' +
                         '</div>';
