@@ -1053,7 +1053,7 @@ $(document).ready(function(){
         boxes++;
         emptyGenerator(boxes);
         var tempHTML =  '<div class="box med">' +
-                        '    <h2 class="handle"><img src="images/duel.png" width="25" height="25" /> COMBAT </h2>' +
+                        '    <h2 class="handle"><img src="images/duel.png" width="25" height="25" /> COMBAT TRACKER </h2>' +
                         '    <div class="inner text-center">' +
                         '    <div class="three-quaters left">' +
                         '        <div class="three-tenths left">Name</div>' +
@@ -1187,7 +1187,7 @@ $(document).ready(function(){
         boxes++;
         emptyGenerator(boxes);
         var tempHTML =  '<div class="box medsmall">' +
-                        '    <h2 class="handle"><img src="images/star.png" width="25" height="25" /> CHALLENGE</h2>' +
+                        '    <h2 class="handle"><img src="images/star.png" width="25" height="25" /> PARTY CR</h2>' +
                         '    <div class="inner text-center">' +
                         '        <div class="one-half left">Party Size</div>' +
                         '        <div class="one-half left">Party Lv.</div>' +

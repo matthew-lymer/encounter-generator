@@ -431,6 +431,18 @@
         margin: 0 0 1px 0
     }
 
+    #filter span{
+        display: block;
+        padding: 5px;
+        box-sizing: border-box;
+        background: #fff;
+        color: #2c6373
+    }
+
+    #filter a + span{
+        margin: 10px 0 0 0
+    }
+
     #minimapBG{
         box-sizing: border-box;
         width: 80px;
