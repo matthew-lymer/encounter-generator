@@ -2103,6 +2103,16 @@ var classList = [
             }
         ],
     },
+    {"name": "Cleric (Coming Soon)"},
+    {"name": "Druid (Coming Soon)"},
+    {"name": "Fighter (Coming Soon)"},
+    {"name": "Monk (Coming Soon)"},
+    {"name": "Paladin (Coming Soon)"},
+    {"name": "Ranger (Coming Soon)"},
+    {"name": "Rogue (Coming Soon)"},
+    {"name": "Sorcerer (Coming Soon)"},
+    {"name": "Warlock (Coming Soon)"},
+    {"name": "Wizard (Coming Soon)"}
     // {
     //     "name": "Cleric",
     //     "slug": "cleric",
