@@ -738,7 +738,7 @@ $(document).ready(function(){
 
             html += "</table>";
 
-        $(this).parent().parent().find(".class_a").html("<hr><h2>" + classItem["name"] + "</h2>");
+        $(this).parent().parent().find(".class_a").html("<hr><h2>" + classItem["name"] + "</h2><hr>");
         $(this).parent().parent().find(".class_b").html(classItem["hp"]);
         $(this).parent().parent().find(".class_c").html(classItem["prof"]);
         $(this).parent().parent().find(".class_d").html(classItem["equipment"]);
