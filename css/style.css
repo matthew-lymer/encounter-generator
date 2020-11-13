@@ -58,6 +58,13 @@
         padding: 5px 0;
     }
 
+    blockquote{
+        margin: 10px 0 0 0;
+        padding: 1px 20px;
+        box-sizing: border-box;
+        background: #ccc;
+    }
+
     ul{
         padding: 0 0 0 20px;
         box-sizing: border-box;
