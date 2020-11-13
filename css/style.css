@@ -433,6 +433,15 @@
         box-sizing: border-box;
     }
 
+    #minimap{
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 100%;
+        z-index: 100;
+    }
+
     #dummyHeader{
         height: 40px;
     }
