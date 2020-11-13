@@ -432,8 +432,8 @@
         width: 80px;
         padding-top: 50px;
         right: 0;
-        background: rgba(255,255,255,0.9);
         background: rgba(212,231,236,0.9);
+        background: rgba(255,255,255,0.9);
         position: fixed;
         height: 100%;
     }
