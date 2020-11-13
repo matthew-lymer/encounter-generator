@@ -894,7 +894,7 @@ $(document).ready(function(){
         selection += '<a class="reRollSpell reroll" style="display:none" href="#"><h4>SEARCH</h4></a>';
 
         var tempHTML =  '<div class="box overflow xxlarge">' +
-                        '    <h2 class="handle"><img src="images/spell.png" width="25" height="25" /> PC Class</h2>' +
+                        '    <h2 class="handle"><img src="images/class.png" width="25" height="25" /> PC Class</h2>' +
                         '    <div class="inner">' +
                         '        <div class="text-center top-controls">' +
                                     selection +
