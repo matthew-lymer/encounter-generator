@@ -495,6 +495,11 @@
         display: block;
     }
 
+    .box.xxlarge{
+        width: 90%;
+        width: 1000px;
+    }
+
     .box.xlarge{
         width: 76.66%;
         width: 900px;
