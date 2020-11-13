@@ -906,7 +906,7 @@ $(document).ready(function(){
                         '        <div class="border-box left one-third class_b"></div>' +
                         '        <div class="border-box left one-third class_c"></div>' +
                         '        <div class="border-box left one-third class_d"></div>' +
-                        '        <div class="border-box class_e"></div>' +
+                        '        <div class="border-box class_e clear"></div>' +
                         '        <div class="clear"></div>' +
                         '    </div>' +
                         '</div>';
