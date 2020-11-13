@@ -694,8 +694,7 @@ $(document).ready(function(){
         var classItem = classList[classID];
 
         var rowCount = 0;
-        var html = "<hr><h2>" + classItem["name"] + "</h2>";
-            html += "<hr>";
+        var html = "<hr>";
 
             if(classItem["table"].substring(0, 7) == "<table>"){
                 //Already Formatted
@@ -739,10 +738,11 @@ $(document).ready(function(){
 
             html += "</table>";
 
-        $(this).parent().parent().find(".class_a").html(classItem["hp"]);
-        $(this).parent().parent().find(".class_b").html(classItem["prof"]);
-        $(this).parent().parent().find(".class_c").html(classItem["equipment"]);
-        $(this).parent().parent().find(".class_d").html(html);
+        $(this).parent().parent().find(".class_a").html("<hr><h2>" + classItem["name"] + "</h2>");
+        $(this).parent().parent().find(".class_b").html(classItem["hp"]);
+        $(this).parent().parent().find(".class_c").html(classItem["prof"]);
+        $(this).parent().parent().find(".class_d").html(classItem["equipment"]);
+        $(this).parent().parent().find(".class_e").html(html);
     });
 
     $("#generator").on("change", ".itemSelect", function(e){
@@ -902,10 +902,11 @@ $(document).ready(function(){
                         '           <a class="drag" href="#"><img src="images/drag.png" width="26"' +
                         '           height="26" /></a>' +
                         '       </div>' +
-                        '        <div class="border-box left one-half class_a"></div>' +
-                        '        <div class="border-box left one-half class_b"></div>' +
-                        '        <div class="border-box class_c"></div>' +
-                        '        <div class="border-box class_d"></div>' +
+                        '        <div class="border-box class_a"></div>' +
+                        '        <div class="border-box left one-third class_b"></div>' +
+                        '        <div class="border-box left one-third class_c"></div>' +
+                        '        <div class="border-box left one-third class_d"></div>' +
+                        '        <div class="border-box class_e"></div>' +
                         '        <div class="clear"></div>' +
                         '    </div>' +
                         '</div>';
