@@ -435,11 +435,11 @@
 
     #minimap{
         position: fixed;
-        top: 0;
+        top: 49px;
         right: 0;
-        width: 200px;
+        width: 150px;
         height: 100%;
-        z-index: 100;
+        z-index: 11;
     }
 
     #dummyHeader{
